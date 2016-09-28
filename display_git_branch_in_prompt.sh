@@ -6,16 +6,16 @@ function git_branch
 
 bash_color=32
 
-if [ $(hostname) == "mbot05n" ]; then
+if [ $(hostname) == "mbot05h" ]; then
    #bash_color=31 # red color
    #bash_color=32 # green color
    #bash_color=33 # yellow color
-   #bash_color=34 # blue color
-   bash_color=35 # purple color
+   bash_color=34 # blue color
+   #bash_color=35 # purple color
    #bash_color=36 # cyan color
 
-elif [ $(hostname) == "mbot04n" ]; then
-   bash_color=34
+elif [ $(hostname) == "mbot05n" ]; then
+   bash_color=35
 fi
 
 #select this one to show the complete terminal path:
