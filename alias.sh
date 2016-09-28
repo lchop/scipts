@@ -22,8 +22,12 @@ alias hello_sub='rostopic echo /test'
 # convenient alias
 alias ..='cd .. && ls'
 
-#component alias
+# component alias
 alias dwa='roslaunch mbot_2dnav 2dnav.launch'
 
-#to build all catkin_ws and keep it that way
+# to build all catkin_ws and keep it that way
 alias build_all_catkin_ws='catkin_make -DCATKIN_WHITELIST_PACKAGES=""'
+
+# text editor alias
+alias e="emacs -nw"
+alias se="sudo emacs -nw"

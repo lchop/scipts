@@ -4,7 +4,7 @@ export ROS_MASTER_URI=http://10.1.15.14:11311
 export ROS_IP=10.1.15.14
 #export MBOT_NAME=mbot05
 #export ROS_NAMESPACE=mbot05 # for single robot is ok not to have namespace, however Luis requires so we then set later
-export ROS_WORKSPACE=~/Git/code/catkin_ws
+export ROS_WORKSPACE=~/ros_ws
 
 #VOCON NUANCE
 export LD_LIBRARY_PATH=~/Software/nuance/bin/linux/i86:${LD_LIBRARY_PATH}
