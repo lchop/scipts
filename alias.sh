@@ -1,6 +1,6 @@
 # monarch robot driver related alias
-alias kill_driver='sudo pkill -f ros'
-#alias bringup_mbot='source /opt/mbot_ros/setup.bash && roslaunch /opt/mbot_ros/share/mbot_ros/mbot.launch'
+alias kill_all_ros_nodes='sudo pkill -f ros'
+alias launch_driver='source /opt/mbot_ros/setup.bash && roslaunch /opt/mbot_ros/share/mbot_ros/mbot.launch'
 alias bringup_mbot='roslaunch mbot_bringup robot.launch'
 
 # competition alias
