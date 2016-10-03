@@ -24,6 +24,7 @@ alias ..='cd .. && ls'
 
 # component alias
 alias dwa='roslaunch mbot_2dnav 2dnav.launch'
+alias skynet='rosrun mbot_demos planning_coordinator_sm_node'
 
 # to build all catkin_ws and keep it that way
 alias build_all_catkin_ws='catkin_make -DCATKIN_WHITELIST_PACKAGES=""'
