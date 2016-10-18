@@ -27,7 +27,7 @@ export LD_LIBRARY_PATH=$EC_BIN:$LD_LIBRARY_PATH
 export EDITOR='vim' # rosed command will open editor using this program
 export CATTER='pygmentize -g' # roscat function will display the contents of the file by using this program
 export ROSCONSOLE_FORMAT='[${severity}] [${node}]: ${message}' # print ros messages on terminal by node name and message
-export ROS_NAMESPACE=mbot05
+#export ROS_NAMESPACE=mbot05
 export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known host
 
 # ROBOT RELATED
