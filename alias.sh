@@ -32,3 +32,6 @@ alias build_all_catkin_ws='catkin_make -DCATKIN_WHITELIST_PACKAGES=""'
 # text editor alias
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
+
+# alias to power off pc
+alias poweroff="shutdown -h now"
