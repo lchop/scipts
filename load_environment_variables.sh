@@ -32,4 +32,5 @@ export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known ho
 
 # ROBOT RELATED
 export ROBOT=mbot05
-export ROBOT_ENV=ist-lab
+export ROBOT_ENV=isr-lab
+#export ROBOT_ENV=isr-test-bed
