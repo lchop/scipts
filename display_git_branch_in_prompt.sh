@@ -16,6 +16,8 @@ if [ $(hostname) == "mbot05h" ]; then
 
 elif [ $(hostname) == "mbot05n" ]; then
    bash_color=35
+elif [ $(hostname) == "harode-ws" ]; then
+   bash_color=36
 fi
 
 #select this one to show the complete terminal path:
