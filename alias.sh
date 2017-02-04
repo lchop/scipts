@@ -1,37 +1,51 @@
-# monarch robot driver related alias
+# socrob robocup alias
 alias kill_all_ros_nodes='sudo pkill -f ros'
-alias launch_driver='source /opt/mbot_ros/setup.bash && roslaunch /opt/mbot_ros/share/mbot_ros/mbot.launch'
+alias launch_mbot_ros_driver_manually='source /opt/mbot_ros/setup.bash && roslaunch /opt/mbot_ros/share/mbot_ros/mbot.launch'
 alias bringup_mbot='roslaunch mbot_bringup robot.launch'
-
-# competition alias
-alias scan='rostopic hz /mbot05/scan'
-alias bat='rostopic echo /mbot05/batteries_voltage'
-alias flags='emacs -nw /home/socrob/ros/socrob_at_home/code/trunk/rosbuild_ws/rockin_tasks/launch/rockin_tasks.launch'
-alias rockin='roslaunch rockin_tasks rockin_tasks.launch'
-alias socrob='roslaunch socrob_launch main_nav.launch'
+alias bat='rostopic echo /batteries_voltage' # check battery level on the robot
+alias gazebo='rosrun gazebo_ros gzclient' # run gazebo gui client (server must be running)
+alias teleop='roslaunch mbot_teleop_joypad teleop_joypad.launch' # teleoperation with joypad
+alias moveit='roslaunch mbot_moveit_ist_left_arm move_group.launch' # launch moveit interface
+alias rqt_mbot_actions='roslaunch mbot_actions rqt_action_client.launch' # gui to interact with action servers
+alias rqt_rosplan='rqt --standalone rosplan_rqt' # knowledge base visualization
+alias rqt_planning_coordinator='roslaunch mir_planning_core planning_coordinator_event_gui.launch' # task planning sm manual interface
+alias kill_arm='rosrun cyton_gamma_1500_driver set_arm_torque_off' # kill all arm joints alias
+alias rqt_moveit='rqt --standalone mcr_moveit_commander_gui --force-discover' # moveit commander custom gui interface
+alias smach_viewer='rosrun smach_viewer smach_viewer.py'
+alias rviz='rosrun rviz rviz --display-config ${ROS_WORKSPACE}/isr_monarch_robot/mbot_tools/rviz_configurations/universal.rviz'
+alias reconfigure='rosrun rqt_reconfigure rqt_reconfigure' # open dynamic reconfigure
+alias tf_view_frames='cd /var/tmp && rosrun tf view_frames && evince frames.pdf &' # view current frames
 
 # tools alias
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively
 alias sl='ls' # when typing fast sometimes ls gets typed as sl
-alias cap='pygmentize -g' # cat files in color by using pygmentize program
+alias cap='pygmentize -g' # replace cat with python-pygments to cat with colors
+alias ..='cd .. && ls' # going back one directory and showing files convenient alias
+alias m='wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz' #toggle terminal from restored to maximized
 
 # network testing alias
-alias hello_pub='rostopic pub /test std_msgs/String hello'
-alias hello_sub='rostopic echo /test'
-
-# convenient alias
-alias ..='cd .. && ls'
+alias hello_pub='rostopic pub /test std_msgs/String hello' # publish a test topic to test network sanity
+alias hello_sub='rostopic echo /test' # echo a test topic to test network sanity
 
 # component alias
-alias dwa='roslaunch mbot_2dnav 2dnav.launch'
-alias skynet='rosrun mbot_demos planning_coordinator_sm_node'
-
-# to build all catkin_ws and keep it that way
-alias build_all_catkin_ws='catkin_make -DCATKIN_WHITELIST_PACKAGES=""'
+alias dwa='roslaunch mbot_2dnav 2dnav.launch' # launch navigation stack in dwa mode
+alias skynet='rosrun mbot_demos planning_coordinator_sm_node' # run planning state machine
 
 # text editor alias
-alias e="emacs -nw"
-alias se="sudo emacs -nw"
+alias e='emacs -nw' # open emacs text editor in terminal mode
+alias se='sudo emacs -nw' # open emacs text editor with admin rights
 
 # alias to power off pc
-alias poweroff="shutdown -h now"
+alias poweroff='shutdown -h now'
+
+# ssh alias
+alias mbot='ssh socrob@10.1.15.14' # alias to quickly ssh into nav robot pc
+alias mbot2='ssh socrob@10.1.15.15' # alias to quickly ssh into hri robot pc
+alias harode='ssh harode@10.0.2.69' # alias to quickly ssh into harode workstation
+alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh harode pc from outside ist
+
+# export ROS_MASTER_URI alias
+alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
+alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311'
+alias export_dante='export ROS_MASTER_URI=http://10.0.1.23:11311'
+
