@@ -1,14 +1,15 @@
 # the main script that should always be source from /home/user/.bashrc
 #---------------------------------------------------------------------
 
-# source personal configuration at beginning
-source $HOME/scripts/personal_config/personal_config.sh
-
-# source a catkin workspace
-source $HOME/scripts/source_ros_workspace.sh
+# source personal configuration at beginning if exists
+PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/personal_config.sh
+test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
 # load environment variables
 source $HOME/scripts/load_environment_variables.sh
+
+# source a catkin workspace
+source $HOME/scripts/source_ros_workspace.sh
 
 # source mbot alias
 source $HOME/scripts/alias.sh
@@ -23,4 +24,5 @@ source $HOME/scripts/display_git_branch_in_prompt.sh
 source $HOME/scripts/roscat.sh
 
 # source personal configuration at end (again)
-source $HOME/scripts/personal_config/personal_config.sh
+PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/personal_config.sh
+test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
