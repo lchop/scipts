@@ -1,2 +1,2 @@
 #SOURCE ROS WORKSPACE
-source $HOME/ros_ws/devel/setup.bash
+source $ROS_WORKSPACE/../devel/setup.bash
