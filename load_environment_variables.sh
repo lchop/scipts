@@ -17,7 +17,7 @@ export EDITOR='vim' # rosed command will open editor using this program
 export CATTER='pygmentize -g' # roscat function will display the contents of the file by using this program
 export ROSCONSOLE_FORMAT='[${severity}] [${node}]: ${message}' # print ros messages on terminal by node name and message
 export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known host
-export ROS_WORKSPACE=$HOME/ros_ws/src # the location to go when doing: roscd + enter
+export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/ros_ws/src} # set this env, only if it does not previouly exist
 #export ROS_NAMESPACE=mbot05
 
 # ROBOT DESCRIPTION AND ROBOT ENVIRONMENT
