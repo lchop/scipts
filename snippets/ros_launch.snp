@@ -1,0 +1,30 @@
+# launch stuff on another PC
+
+  <!-- PC2 -->
+
+    <!-- text to speech (espeach ros wrapper) PC2! -->
+    <group>
+        <machine name="mbot05h" user="socrob" address="mbot05h" env-loader="$(find mbot_bringup)/env.sh" />
+
+        <node machine="mbot05h" pkg="espeak_ros" type="espeak_node" name="text_to_speech" output="screen">
+            <remap from="/espeak_node/speak_line" to="/say"/>
+            <param name="rate"        value="150" />
+            <param name="volume"      value="100" />
+            <param name="pitch"       value="30" />
+            <param name="range"       value="30" />
+            <param name="wordgap"     value="43" />
+            <param name="age"         value="50" />
+            <param name="voice"       value="1" />
+            <param name="dialect"     value="5" />
+            <param name="punctuation" value="0" />
+            <param name="capitals"    value="0" />
+            <param name="gender"      value="1" />
+        </node>
+
+        <!-- sao roque museum state machine, goes to waypoints and explains them -->
+        <node machine="mbot05h" pkg="mbot_demos" type="demo_$(arg robot_env)_sm_node" name="ist_demo_sm" output="screen" />
+
+    </group>
+
+---
+
