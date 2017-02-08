@@ -36,7 +36,7 @@ alias e='emacs -nw' # open emacs text editor in terminal mode
 alias se='sudo emacs -nw' # open emacs text editor with admin rights
 
 # alias to power off pc
-alias poweroff='shutdown -h now'
+alias poweroff='sudo shutdown -h now'
 
 # ssh alias
 alias mbot='ssh socrob@10.1.15.14' # alias to quickly ssh into nav robot pc
