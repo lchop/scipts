@@ -5,10 +5,7 @@
 git commit --author="Name <email>" -m "commit msg"
 
 # convert .svg (graphic vector image) to .pdf
-rsvg-convert -f pdf -o arquitecture_diagram.pdf arquitecture_diagram.svg
-
-# transform svg image to pdf
-inkscape -D -z --file=image.svg --export-pdf=image.pdf --export-latex
+rsvg-convert -f pdf -o architecture_diagram.pdf architecture_diagram.svg
 
 # to check if a package is installed on the PC
 dpkg -l package_name
