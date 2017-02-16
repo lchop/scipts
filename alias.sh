@@ -15,6 +15,7 @@ alias smach_viewer='rosrun smach_viewer smach_viewer.py'
 alias rviz='rosrun rviz rviz --display-config ${ROS_WORKSPACE}/isr_monarch_robot/mbot_tools/rviz_configurations/universal.rviz'
 alias reconfigure='rosrun rqt_reconfigure rqt_reconfigure' # open dynamic reconfigure
 alias tf_view_frames='cd /var/tmp && rosrun tf view_frames && evince frames.pdf &' # view current frames
+alias cbt='catkin build --this'
 
 # tools alias
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively
@@ -48,4 +49,3 @@ alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh harode pc
 alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
 alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311'
 alias export_dante='export ROS_MASTER_URI=http://10.0.1.23:11311'
-
