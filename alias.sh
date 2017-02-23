@@ -15,6 +15,7 @@ alias smach_viewer='rosrun smach_viewer smach_viewer.py'
 alias rviz='rosrun rviz rviz --display-config ${ROS_WORKSPACE}/isr_monarch_robot/mbot_tools/rviz_configurations/universal.rviz'
 alias reconfigure='rosrun rqt_reconfigure rqt_reconfigure' # open dynamic reconfigure
 alias tf_view_frames='cd /var/tmp && rosrun tf view_frames && evince frames.pdf &' # view current frames
+alias cb='catkin build'
 alias cbt='catkin build --this'
 
 # tools alias
