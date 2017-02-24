@@ -24,7 +24,7 @@ LAUNCH_FILE_CONTENT="<?xml version=\"1.0\"?>\n<launch>\n\n    <!-- small descrip
 SCRIPTS_CONTENT="#!/usr/bin/env python\n\nimport ${PKG_NAME}_ros.${PKG_NAME}_implementation\n\nif __name__ == '__main__':\n    ${PKG_NAME}_ros.${PKG_NAME}_implementation.main()"
 MY_NODE_IMPLEMENTATION_CONTENT=""
 MY_TEST_CONTENT=""
-SETUP_PY_CONTENT="#!/usr/bin/env python\n\nfrom distutils.core import setup\nfrom catkin_pkg.python_setup import generate_distutils_setup\n\n# for your packages to be recognized by python\nd = generate_distutils_setup(\n  packages=['${PKG_NAME}', '${PKG_NAME}_ros'],\n  package_dir={'${PKG_NAME}': 'common/src', '${PKG_NAME}_ros': 'ros/src'}\n)\n\nsetup(**d)"
+SETUP_PY_CONTENT="#!/usr/bin/env python\n\nfrom distutils.core import setup\nfrom catkin_pkg.python_setup import generate_distutils_setup\n\n# for your packages to be recognized by python\nd = generate_distutils_setup(\n  packages=['${PKG_NAME}', '${PKG_NAME}_ros'],\n  package_dir={'${PKG_NAME}': 'common/src/${PKG_NAME}', '${PKG_NAME}_ros': 'ros/src/${PKG_NAME}_ros'}\n)\n\nsetup(**d)"
 
 # create folder structure
 mkdir ${PKG_NAME}
