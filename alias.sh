@@ -17,7 +17,7 @@ alias reconfigure='rosrun rqt_reconfigure rqt_reconfigure' # open dynamic reconf
 alias tf_view_frames='cd /var/tmp && rosrun tf view_frames && evince frames.pdf &' # view current frames
 alias cb='catkin build'
 alias cbt='catkin build --this'
-alias rotate_screen='bash ${ROS_WORKSPACE}/isr_monarch_robot/mbot_drivers/idmind_drivers/idmind_config/ros/scripts/rotate_screen.sh'
+alias rotate_touchscreen='bash ${ROS_WORKSPACE}/isr_monarch_robot/mbot_drivers/idmind_drivers/idmind_config/ros/scripts/rotate_screen.sh'
 
 # tools alias
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively
