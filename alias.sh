@@ -18,6 +18,7 @@ alias tf_view_frames='cd /var/tmp && rosrun tf view_frames && evince frames.pdf 
 alias cb='catkin build'
 alias cbt='catkin build --this'
 alias rotate_touchscreen='bash ${ROS_WORKSPACE}/isr_monarch_robot/mbot_drivers/idmind_drivers/idmind_config/ros/scripts/rotate_screen.sh'
+alias gen_urdf='rosrun xacro xacro.py `rospack find mbot_description`/urdf/mbot_body.urdf.xacro -o `pwd`/generated.urdf'
 
 # tools alias
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively
