@@ -10,8 +10,8 @@ fi
 # assign first received argument to variable PKG_NAME
 PKG_NAME=${1}
 AUTHOR_NAME='Oscar Lima'
-AUTHOR_EMAIL='olima_84@yahoo.com'
-MAINTAINER_EMAIL='olima_84@yahoo.com'
+AUTHOR_EMAIL='olima@isr.tecnico.ulisboa.pt'
+MAINTAINER_EMAIL='olima@isr.tecnico.ulisboa.pt'
 MAINTAINER_NAME='Oscar Lima'
 
 # setup file content
