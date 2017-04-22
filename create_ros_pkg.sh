@@ -11,8 +11,8 @@ fi
 PKG_NAME=${1}
 AUTHOR_NAME='Oscar Lima'
 AUTHOR_EMAIL='olima@isr.tecnico.ulisboa.pt'
-MAINTAINER_EMAIL='olima@isr.tecnico.ulisboa.pt'
 MAINTAINER_NAME='Oscar Lima'
+MAINTAINER_EMAIL='olima@isr.tecnico.ulisboa.pt'
 
 # setup file content
 CMAKELISTS_CONTENT="cmake_minimum_required(VERSION 2.8.3)\nproject(${PKG_NAME})\n\nfind_package(catkin REQUIRED\n  COMPONENTS\n)\n\ncatkin_python_setup()\n\ncatkin_package(\n    CATKIN_DEPENDS\n)"
@@ -21,7 +21,7 @@ PACKAGE_XML_CONTENT="<?xml version=\"1.0\"?>\n<package>\n  <name>${PKG_NAME}</na
 CONFIG_YAML_CONTENT="#TODO!!"
 README_CONTENT="${PKG_NAME} documentation"
 LAUNCH_FILE_CONTENT="<?xml version=\"1.0\"?>\n<launch>\n\n    <!-- small description about your node -->\n    \n    <node   pkg=\"my_package_name\" type=\"my_node_name\" name=\"my_node_name\"\n            respawn=\"false\" output=\"screen\" args=\"\$(find ${PKG_NAME}_name)/ros/config/my_arg_file.yaml\"/>\n\n</launch>"
-SCRIPTS_CONTENT="#!/usr/bin/env python\n\nimport ${PKG_NAME}_ros.${PKG_NAME}_implementation\n\nif __name__ == '__main__':\n    ${PKG_NAME}_ros.${PKG_NAME}_implementation.main()"
+SCRIPTS_CONTENT="#!/usr/bin/env python\n\nimport ${PKG_NAME}_ros.${PKG_NAME}\n\nif __name__ == '__main__':\n    ${PKG_NAME}_ros.${PKG_NAME}.main()"
 MY_NODE_IMPLEMENTATION_CONTENT=""
 MY_TEST_CONTENT=""
 SETUP_PY_CONTENT="#!/usr/bin/env python\n\nfrom distutils.core import setup\nfrom catkin_pkg.python_setup import generate_distutils_setup\n\n# for your packages to be recognized by python\nd = generate_distutils_setup(\n  packages=['${PKG_NAME}', '${PKG_NAME}_ros'],\n  package_dir={'${PKG_NAME}': 'common/src/${PKG_NAME}', '${PKG_NAME}_ros': 'ros/src/${PKG_NAME}_ros'}\n)\n\nsetup(**d)"
@@ -47,7 +47,7 @@ touch ros/doc/README.md
 touch ros/launch/${PKG_NAME}.launch
 touch ros/scripts/${PKG_NAME}_node
 touch ros/src/${PKG_NAME}_ros/__init__.py
-touch ros/src/${PKG_NAME}_ros/${PKG_NAME}_node.py
+touch ros/src/${PKG_NAME}_ros/${PKG_NAME}.py
 touch ros/test/${PKG_NAME}_test.py
 touch setup.py
 
