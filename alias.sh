@@ -39,6 +39,7 @@ alias skynet='rosrun mbot_demos planning_coordinator_sm_node' # run planning sta
 # text editor alias
 alias e='emacs -nw' # open emacs text editor in terminal mode
 alias se='sudo emacs -nw' # open emacs text editor with admin rights
+alias sublime='sublime-text'
 
 # alias to power off pc
 alias poweroff='sudo shutdown -h now'
