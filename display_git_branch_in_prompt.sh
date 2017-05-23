@@ -16,7 +16,7 @@ if [ $(hostname) == "mbot05h" ]; then
 
 elif [ $(hostname) == "mbot05n" ]; then
    bash_color=35
-elif [ $(hostname) == "harode01" ]; then
+elif [ $(hostname) == "harode-server" ]; then
    bash_color=36
 fi
 
