@@ -1,7 +1,7 @@
 # the main script that should always be source from /home/user/.bashrc
 #---------------------------------------------------------------------
 
-# source personal configuration at beginning if exists
+# source personal configuration file (if it exists)
 PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/personal_config.sh
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
@@ -10,6 +10,10 @@ export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/ros_ws/src}
 
 # source a catkin workspace
 source $HOME/scripts/source_ros_workspace.sh
+
+# source personal configuration file (if it exists), this is needed because
+# sourcing the catkin workspace (previous step) destroys some env variables
+test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
 # load environment variables
 source $HOME/scripts/load_environment_variables.sh
@@ -25,6 +29,3 @@ source $HOME/scripts/display_git_branch_in_prompt.sh
 
 # roscat cat a file by pkg_name and filename
 source $HOME/scripts/roscat.sh
-
-# source personal configuration at end (again) if exists
-test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
