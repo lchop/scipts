@@ -2,6 +2,7 @@
 alias kill_all_ros_nodes='sudo pkill -f ros'
 alias launch_mbot_ros_driver_manually='source /opt/mbot_ros/setup.bash && roslaunch /opt/mbot_ros/share/mbot_ros/mbot.launch'
 alias bringup_mbot='roslaunch mbot_bringup robot.launch'
+alias bringup_sim='roslaunch mbot_simulation robot.launch'
 alias bat='rostopic echo /batteries_voltage' # check battery level on the robot
 alias gazebo='rosrun gazebo_ros gzclient' # run gazebo gui client (server must be running)
 alias teleop='roslaunch mbot_teleop_joypad teleop_joypad.launch' # teleoperation with joypad
