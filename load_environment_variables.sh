@@ -21,8 +21,7 @@ export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known ho
 
 # ROBOT DESCRIPTION AND ROBOT ENVIRONMENT
 export ROBOT=mbot05
-export ROBOT_ENV=isr-lab # a map of the testbed plus the LRM corridor
-#export ROBOT_ENV=isr-test-bed # a map only of the testbed area without the full LRM lab
+export ROBOT_ENV=${ROBOT_ENV:=isr-lab} # set only if it does not previously exists
 
 # workaroung to remove gazebo error msgs:
 # Error [Param.cc:181] Unable to set value [1,0471975511965976] for key[horizontal_fov]
