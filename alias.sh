@@ -56,3 +56,6 @@ alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh harode pc
 alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
 alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311'
 alias export_dante='export ROS_MASTER_URI=http://10.0.1.23:11311'
+
+# ERL alias
+alias refbox_server='roslaunch roah_rsbb roah_rsbb.launch'
