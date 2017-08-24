@@ -59,3 +59,4 @@ alias export_dante='export ROS_MASTER_URI=http://10.0.1.23:11311'
 
 # ERL alias
 alias refbox_server='roslaunch roah_rsbb roah_rsbb.launch'
+alias refbox_client='roslaunch roah_rsbb_comm_ros test.launch team_name:=SocRob robot_name:=mbot05 rsbb_key:=EKY3GZUe rsbb_host:=10.0.255.255'
