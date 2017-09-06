@@ -28,5 +28,3 @@ export ROBOT_ENV=${ROBOT_ENV:=isr-lab} # set only if it does not previously exis
 # Error [Param.cc:181] Unable to set value [0,100000001] for key[near]
 export LC_NUMERIC=C
 
-# for gazebo to be able to find the IKEA furniture
-export GAZEBO_MODEL_PATH=${ROS_WORKSPACE}/mbot_simulation/mbot_simulation_environments/models
