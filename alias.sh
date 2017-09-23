@@ -42,6 +42,7 @@ alias skynet='rosrun mbot_demos planning_coordinator_sm_node' # run planning sta
 alias e='emacs -nw' # open emacs text editor in terminal mode
 alias se='sudo emacs -nw' # open emacs text editor with admin rights
 alias sublime='sublime-text'
+alias remove_endline_spaces="sed -i 's/\s*$//'" # remove automatically spaces at the end of files, needs the file as argument at the end, i.e. remove_spaces my_file.txt
 
 # alias to power off pc
 alias poweroff='sudo shutdown -h now'
