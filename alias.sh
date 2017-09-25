@@ -28,7 +28,8 @@ alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean tem
 alias sl='ls' # when typing fast sometimes ls gets typed as sl
 alias cap='pygmentize -g' # replace cat with python-pygments to cat with colors
 alias ..='cd .. && ls' # going back one directory and showing files convenient alias
-alias m='wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz' #toggle terminal from restored to maximized
+alias m='wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz' # toggle terminal from restored to maximized
+alias pull='git pull origin kinetic' # update socrob repository, works only for those which default branch is kinetic and if your remote name is origin
 
 # network testing alias
 alias hello_pub='rostopic pub /test std_msgs/String hello' # publish a test topic to test network sanity
