@@ -44,7 +44,7 @@ alias refbox_client='roslaunch roah_rsbb_comm_ros test.launch team_name:=SocRob 
 # ------
 
 # mbot driver
-alias bringup_mbot='roslaunch mbot_bringup robot.launch' # launch (real) robot driver
+alias bringup_mbot="bash ${HOME}/scripts/safe_bringup.sh" # launch (real) robot driver
 alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation
 alias bat='rosservice call /mbot_driver/sensors/batteries | grep battery' # check battery level on the robot
 alias teleop='roslaunch mbot_teleop_joypad teleop_joypad.launch' # teleoperation with joypad
