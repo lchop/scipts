@@ -17,7 +17,7 @@ MAINTAINER_EMAIL='olima@isr.tecnico.ulisboa.pt'
 # setup file content
 CMAKELISTS_CONTENT="cmake_minimum_required(VERSION 2.8.3)\nproject(${PKG_NAME})\n\nfind_package(catkin REQUIRED\n  COMPONENTS\n)\n\ncatkin_python_setup()\n\ncatkin_package(\n    CATKIN_DEPENDS\n)"
 ROS_INDEPENDAT_CLASS_CONTENT="#!/usr/bin/env python\n\ndef my_generic_sum_function(a, b):\n    \"\"\"\n    TODO!! documentation\n    \"\"\"\n    return a + b"
-PACKAGE_XML_CONTENT="<?xml version=\"1.0\"?>\n<package>\n  <name>${PKG_NAME}</name>\n  <version>1.0.0</version>\n  <description>\n    TODO!\n  </description>\n\n  <license>GPLv3</license>\n\n  <author email=\"olima_84@yahoo.com\">${AUTHOR_NAME}</author>\n  <maintainer email=\"${MAINTAINER_EMAIL}\">${MAINTAINER_NAME}</maintainer>\n\n  <buildtool_depend>catkin</buildtool_depend>\n\n</package>"
+PACKAGE_XML_CONTENT="<?xml version=\"1.0\"?>\n<package>\n  <name>${PKG_NAME}</name>\n  <version>1.0.0</version>\n  <description>\n    TODO!\n  </description>\n\n  <license>GPLv3</license>\n\n  <author email=\"${AUTHOR_EMAIL}\">${AUTHOR_NAME}</author>\n  <maintainer email=\"${MAINTAINER_EMAIL}\">${MAINTAINER_NAME}</maintainer>\n\n  <buildtool_depend>catkin</buildtool_depend>\n\n</package>"
 CONFIG_YAML_CONTENT="#TODO!!"
 README_CONTENT="${PKG_NAME} documentation"
 LAUNCH_FILE_CONTENT="<?xml version=\"1.0\"?>\n<launch>\n\n    <!-- small description about your node -->\n    \n    <node   pkg=\"my_package_name\" type=\"my_node_name\" name=\"my_node_name\"\n            respawn=\"false\" output=\"screen\" args=\"\$(find ${PKG_NAME}_name)/ros/config/my_arg_file.yaml\"/>\n\n</launch>"
