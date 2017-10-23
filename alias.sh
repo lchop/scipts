@@ -20,6 +20,7 @@ alias ..='cd .. && ls' # going back one directory and showing files convenient a
 alias m='wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz' # toggle terminal from restored to maximized
 alias pull='git pull origin kinetic' # update socrob repository, works only for those which default branch is kinetic and if your remote name is origin
 alias poweroff='sudo shutdown -h now' # shutdown pc
+alias update_workspace='source ~/scripts/update_workspace.sh'
 alias please='sudo $(history -p !!)' # run last command as sudo
 
 # text editor
