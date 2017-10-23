@@ -1,7 +1,11 @@
 #! /bin/bash
 
+# scripts repo
+printf "updating SocRob repositories...\n\n --- scripts ---"
+cd $HOME/scripts && git pull origin master
+
 # main repositories
-printf "updating SocRob repositories...\n\n --- isr_monarch_robot ---"
+printf "\n\n --- isr_monarch_robot ---"
 cd $ROS_WORKSPACE/isr_monarch_robot && git pull origin kinetic
 printf "\n\n --- mbot_drivers ---\n\n"
 cd $ROS_WORKSPACE/mbot_drivers && git pull origin kinetic
@@ -47,7 +51,7 @@ fi
 PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/update_workspace.sh
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
-printf "\n\n --- All done ! ciaozinho maluco : ) ---\n\n"
+printf "\n\n --- All done ! Ciao ---\n\n"
 
 # go to the source of your workspace
 cd $ROS_WORKSPACE
