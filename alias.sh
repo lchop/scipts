@@ -60,8 +60,10 @@ alias dwa='roslaunch mbot_2dnav 2dnav.launch' # launch navigation stack in dwa m
 alias cancel_move_base_goal='rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}'
 
 # object recognition alias
-alias perceive_objects='rosrun mbot_actions perceive_location_client_test_node'
 alias enable_object_training='source ~/scripts/enable_object_trainning.sh'
+alias tilt_head_cam='rostopic pub --once /cmd_head_camera_motor std_msgs/UInt16' # tilt the camera to a specific anglei (requires an angle as argument)
+alias lookup='rostopic pub --once /cmd_head_camera_motor std_msgs/UInt16 75' # tilt the camera up to be able to see a person
+alias perceive='rostopic pub --once /mcr_perception/object_detector/event_in e_trigger' # trigger perception pipeline and recognize objects
 
 # manipulation
 alias moveit='roslaunch mbot_moveit_ist_left_arm move_group.launch' # launch moveit interface
@@ -78,3 +80,11 @@ alias rqt_moveit='rqt --standalone mcr_moveit_commander_gui --force-discover' # 
 alias skynet='rosrun mbot_demos planning_coordinator_sm_node' # run planning state machine
 alias rqt_rosplan='rqt --standalone rosplan_rqt.dispatcher.ROSPlanDispatcher' # knowledge base visualization
 alias rqt_planning_coordinator='roslaunch mir_planning_core planning_coordinator_event_gui.launch' # task planning sm manual interface
+
+# human robot interaction
+alias set_emotion='rostopic pub --once /led_emotions_interface/emotions std_msgs/String' # requires the emotion as argument, Happiness, Anger, Fear, etc.
+alias happy='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Happiness' # Set the robot face to be happy
+alias angry='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Anger' # Set the robot face to be angry
+alias surprised='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Surprise' # Set the robot face to be surprised
+alias sad='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Sadness' # Set the robot face to be sad
+alias speak="espeak -s 120 -v en-us '" # this alias requires a ' at the end of the msg
