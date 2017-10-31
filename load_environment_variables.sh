@@ -6,6 +6,8 @@ if [ $(hostname) == "mbot05n" ]; then
 elif [ $(hostname) == "mbot05h" ]; then
    export ROS_IP=10.1.15.15
    export ROS_MASTER_URI=http://10.1.15.14:11311
+elif [ $(hostname) == "harode-server" ]; then
+   export GAZEBO_MASTER_URI=http://10.0.2.69:11345
 fi
 
 # VOCON NUANCE

@@ -36,7 +36,7 @@ alias mbot2='ssh socrob@10.1.15.15' # ssh to mbot05 pc2 (also known as hri pc)
 alias hello_pub='rostopic pub /test std_msgs/String hello' # publish a test topic to test network sanity
 alias hello_sub='rostopic echo /test' # echo a test topic to test network sanity
 alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
-alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311'
+alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311 && export GAZEBO_MASTER_URI=http://10.0.2.69:11345'
 alias harode='ssh harode@10.0.2.69' # ssh to harode server
 alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh to harode server from outside ist
 
