@@ -28,3 +28,6 @@ export ROBOT_ENV=${ROBOT_ENV:=isr-lab} # set only if it does not previously exis
 # Error [Param.cc:181] Unable to set value [1,0471975511965976] for key[horizontal_fov]
 # Error [Param.cc:181] Unable to set value [0,100000001] for key[near]
 export LC_NUMERIC=C
+
+# for tensor flow to log as little as possible (used in mbot_nlu)
+export TF_CPP_MIN_LOG_LEVEL=2
