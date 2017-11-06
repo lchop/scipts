@@ -16,7 +16,7 @@ cd $ROS_WORKSPACE/mbot_description && git pull origin kinetic
 printf "\n\n --- robocup-at-work ---\n\n"
 cd $ROS_WORKSPACE/robocup-at-work && git pull origin kinetic
 printf "\n\n --- speech_recognition ---\n\n"
-cd $ROS_WORKSPACE/speech_recognition && git pull origin master
+cd $ROS_WORKSPACE/mbot_natural_language_processing && git pull origin kinetic
 printf "\n\n --- unmerged_packages_for_testing ---\n\n"
 cd $ROS_WORKSPACE/unmerged_packages_for_testing && git pull origin kinetic
 
