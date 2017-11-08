@@ -22,6 +22,8 @@ alias pull='git pull origin kinetic' # update socrob repository, works only for 
 alias poweroff='sudo shutdown -h now' # shutdown pc
 alias update_workspace='source ~/scripts/update_workspace.sh'
 alias please='sudo $(history -p !!)' # run last command as sudo
+alias wifi_on='nmcli radio wifi on'
+alias wifi_off='nmcli radio wifi off'
 
 # text editor
 alias e='emacs -nw' # open emacs text editor in terminal mode
