@@ -32,10 +32,12 @@ alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean tem
 
 # Robot network connection
 alias mbot='ssh socrob@10.1.15.14' # ssh to mbot05 pc1 (also known as nav pc)
+alias roah_mbot='ssh socrob@10.0.0.41' #ssh to mbot05 pc1 in roah network
 alias mbot2='ssh socrob@10.1.15.15' # ssh to mbot05 pc2 (also known as hri pc)
 alias hello_pub='rostopic pub /test std_msgs/String hello' # publish a test topic to test network sanity
 alias hello_sub='rostopic echo /test' # echo a test topic to test network sanity
 alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
+alias export_roah_mbot='export ROS_MASTER_URI=http://10.0.0.41:11311'
 alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311 && export GAZEBO_MASTER_URI=http://10.0.2.69:11345'
 alias harode='ssh harode@10.0.2.69' # ssh to harode server
 alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh to harode server from outside ist
@@ -43,7 +45,7 @@ alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh to harode
 # Competition (ERL)
 alias refbox_server='roslaunch roah_rsbb roah_rsbb.launch' # to communicate with referee box
 alias refbox_client='roslaunch roah_rsbb_comm_ros test.launch team_name:=SocRob robot_name:=mbot05 rsbb_key:=EKY3GZUe rsbb_host:=10.0.255.255' # to communicate with referee box
-alias sync_roah='ntpdate -u 10.0.0.1' # perform time synchronization with refbox server
+alias refbox_sync='ntpdate -u 10.0.0.1' # perform time synchronization with refbox server
 
 # robot components
 # ------
