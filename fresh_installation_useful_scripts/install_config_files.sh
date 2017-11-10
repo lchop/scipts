@@ -34,7 +34,7 @@ echo $email > ../personal_config/email.txt
 printf "\n"
 if [ -f "${HOME}/.gitconfig" ]; then
     read -p "You already have a .gitconfig file. Do you want the socrob config file instead? <y/N>" prompt; printf "\n"
-    if [[ ! $prompt =~ [yY](es)* ]]; then
+    if [[ $prompt =~ [yY](es)* ]]; then
         overwrite_git
     fi
 else
@@ -46,7 +46,7 @@ fi
 #######
 
 read -p "Do you want an awesome vim config file? <y/N>" prompt;
-if [[ ! $prompt =~ [yY](es)* ]]; then
+if [[ $prompt =~ [yY](es)* ]]; then
     mkdir ${HOME}/.cache/vim -p
     mkdir ${HOME}/.vim/colors -p
     cp wombat256mod.vim ${HOME}/.vim/colors/
