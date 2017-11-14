@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # add socrob use to dialout group, you can confirm this command by executing: "groups socrob"
-echo "executing : sudo usermod -a -G dialout socrob"
+echo "executing : sudo usermod -a -G dialout harode"
 sudo usermod -a -G dialout socrob
 
 # copy udev rules to udev directory
