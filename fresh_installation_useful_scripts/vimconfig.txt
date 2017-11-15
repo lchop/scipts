@@ -1,5 +1,4 @@
 :color slate
-:colorscheme wombat256mod
 :set autoindent
 :set expandtab
 :set shiftwidth=4
@@ -22,8 +21,8 @@
 :set cursorline
 :set number
 :set noerrorbells
-:set visualbell
-:set mouse=a
+" :set visualbell
+" :set mouse=a
 :set title
 :set background=dark
 :set foldmethod=syntax
