@@ -1,5 +1,5 @@
 [user]
-    name = My User name
+    name = my_user_name
     email = my_mail@my_domain.com
 [color]
     ui = auto
