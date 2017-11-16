@@ -1,8 +1,17 @@
 # NETWORK CONFIGURATION
+IP_FILE="${HOME}/ip.txt"
 
 # ROBOT SPECIFIC EXPORTS
 if [ $(hostname) == "mbot05n" ]; then
-   export ROS_IP=10.1.15.14
+   # check existing file for setting ip, else set default
+   if [ -f ${IP_FILE} ]; then
+      IP=`grep -v '^#' ${IP_FILE}`
+      export ROS_IP=${IP}
+      export ROS_MASTER_URI=http://${IP}:11311
+   else
+      export ROS_IP=10.1.15.14
+      export ROS_MASTER_URI=http://10.1.15.14:11311
+   fi
 elif [ $(hostname) == "mbot05h" ]; then
    export ROS_IP=10.1.15.15
    export ROS_MASTER_URI=http://10.1.15.14:11311
@@ -22,7 +31,7 @@ export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known ho
 
 # ROBOT DESCRIPTION AND ROBOT ENVIRONMENT
 export ROBOT=${ROBOT:=mbot05} # set only if it does not previously exists, possible values: mbot05-with-arm, mbot05
-export ROBOT_ENV=${ROBOT_ENV:=isr-lab} # set only if it does not previously exists
+export ROBOT_ENV=${ROBOT_ENV:=isr-testbed-updated} # set only if it does not previously exists
 
 # workaroung to remove gazebo error msgs:
 # Error [Param.cc:181] Unable to set value [1,0471975511965976] for key[horizontal_fov]
