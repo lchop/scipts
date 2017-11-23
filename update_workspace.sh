@@ -10,7 +10,7 @@ cd $ROS_WORKSPACE/isr_monarch_robot && git pull origin kinetic
 printf "\n\n --- mbot_drivers ---\n\n"
 cd $ROS_WORKSPACE/mbot_drivers && git pull origin kinetic
 printf "\n\n --- cyton_gamma_1500_description ---\n\n"
-cd $ROS_WORKSPACE/cyton_gamma_1500_description && git pull origin custom-gripper
+cd $ROS_WORKSPACE/cyton_gamma_1500_description && git pull origin tec-gripper
 printf "\n\n --- mbot_description ---\n\n"
 cd $ROS_WORKSPACE/mbot_description && git pull origin kinetic
 printf "\n\n --- robocup-at-work ---\n\n"
