@@ -74,7 +74,7 @@ alias lookup='rostopic pub --once /cmd_head_camera_motor std_msgs/UInt16 75' # t
 alias perceive='rostopic pub --once /mcr_perception/object_detector/event_in e_trigger' # trigger perception pipeline and recognize objects
 
 # manipulation
-alias moveit='roslaunch mbot_moveit_ist_left_arm move_group.launch' # launch moveit interface
+alias moveit='roslaunch mbot_moveit_tec_arm move_group.launch' # launch moveit interface
 alias start_pregrasp_planner='rostopic pub --once /mir_manipulation/pregrasp_planner_pipeline/event_in std_msgs/String e_start'
 alias stop_pregrasp_planner='rostopic pub --once /mir_manipulation/pregrasp_planner_pipeline/event_in std_msgs/String e_stop'
 alias move_arm_planned='rostopic pub --once /move_arm_planned_motion/event_in std_msgs/String e_start'
