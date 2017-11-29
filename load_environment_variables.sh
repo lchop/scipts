@@ -8,6 +8,7 @@ if [ $(hostname) == "mbot05n" ]; then
       IP=`grep -v '^#' ${IP_FILE}`
       export ROS_IP=${IP}
       export ROS_MASTER_URI=http://${IP}:11311
+      export ROSCONSOLE_CONFIG_FILE=$ROS_WORKSPACE/mbot_drivers/mbot_bringup/ros/config/mbot_console.config
    else
       export ROS_IP=10.1.15.14
       export ROS_MASTER_URI=http://10.1.15.14:11311
