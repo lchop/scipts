@@ -15,7 +15,7 @@ printf "\n\n --- mbot_description ---\n\n"
 cd $ROS_WORKSPACE/mbot_description && git pull origin kinetic
 printf "\n\n --- robocup-at-work ---\n\n"
 cd $ROS_WORKSPACE/robocup-at-work && git pull origin kinetic
-printf "\n\n --- speech_recognition ---\n\n"
+printf "\n\n --- mbot natural language processing ---\n\n"
 cd $ROS_WORKSPACE/mbot_natural_language_processing && git pull origin kinetic
 printf "\n\n --- unmerged_packages_for_testing ---\n\n"
 cd $ROS_WORKSPACE/unmerged_packages_for_testing && git pull origin kinetic
@@ -35,7 +35,7 @@ if [ $(hostname) == "mbot05n" ] ; then
     # task planning
     printf "\n\n --- isr_planning ---\n\n"
     cd $ROS_WORKSPACE/isr_planning && git pull origin kinetic
-    
+
     # people following repos
     printf "\n\n --- bayes_people_tracker ---\n\n"
     cd $ROS_WORKSPACE/bayes_people_tracker && git pull origin kinetic
