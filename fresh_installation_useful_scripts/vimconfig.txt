@@ -37,3 +37,4 @@
 :set history=1000
 :set nomodeline
 :set nrformats-=octal
+:hi CursorLine term=bold cterm=bold guibg=Grey40
