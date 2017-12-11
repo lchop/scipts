@@ -38,3 +38,4 @@
 :set nomodeline
 :set nrformats-=octal
 :hi CursorLine term=bold cterm=bold guibg=Grey40
+:set pastetoggle=<F3>
