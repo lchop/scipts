@@ -32,3 +32,9 @@ source $HOME/scripts/display_git_branch_in_prompt.sh
 
 # roscat cat a file by pkg_name and filename
 source $HOME/scripts/roscat.sh
+
+# source autocomplete extensions
+source $HOME/scripts/autcomplete.sh
+
+# source personal config file one last time
+test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
