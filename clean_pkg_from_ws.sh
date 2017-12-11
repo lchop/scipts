@@ -14,6 +14,7 @@ rm -rf $MY_ROS_WORKSPACE/devel/share/$NAME_OF_PKG_TO_CLEAN
 rm -rf $MY_ROS_WORKSPACE/devel/.private/$NAME_OF_PKG_TO_CLEAN
 rm -rf $MY_ROS_WORKSPACE/devel/lib/pkgconfig/${NAME_OF_PKG_TO_CLEAN}.*
 rm -rf $MY_ROS_WORKSPACE/devel/lib/lib${NAME_OF_PKG_TO_CLEAN}.so
+rm -rf $MY_ROS_WORKSPACE/devel/lib/python2.7/dist-packages/${NAME_OF_PKG_TO_CLEAN}
 
 # remove .catkin tools related files
 rm -rf $MY_ROS_WORKSPACE/.catkin_tools/profiles/default/packages/$NAME_OF_PKG_TO_CLEAN
