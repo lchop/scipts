@@ -3,6 +3,16 @@
 NAME_OF_PKG_TO_CLEAN=${1}
 MY_ROS_WORKSPACE=`cd $ROS_WORKSPACE && cd .. && pwd`
 
+if [[ -z "${NAME_OF_PKG_TO_CLEAN}// }" || "$#" -ne 1 ]]; then
+    echo "Usage: clean_pkg_from_ws PACKAGE_NAME"
+    return
+elif [[ ${NAME_OF_PKG_TO_CLEAN} == *[/.]* ]]; then
+    echo "Not supported using '/' or '.' in PACKAGE_NAME"
+    return
+fi
+
+return
+
 # remove log files
 rm -rf $MY_ROS_WORKSPACE/logs
 
