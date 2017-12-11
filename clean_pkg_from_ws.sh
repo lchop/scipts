@@ -11,8 +11,6 @@ elif [[ ${NAME_OF_PKG_TO_CLEAN} == *[/.]* ]]; then
     return
 fi
 
-return
-
 # remove log files
 rm -rf $MY_ROS_WORKSPACE/logs
 
