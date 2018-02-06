@@ -32,7 +32,7 @@ export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known ho
 
 # ROBOT DESCRIPTION AND ROBOT ENVIRONMENT
 export ROBOT=${ROBOT:=mbot05} # set only if it does not previously exists, possible values: mbot05-with-arm, mbot05
-export ROBOT_ENV=${ROBOT_ENV:=isr-testbed-updated} # set only if it does not previously exists
+export ROBOT_ENV=${ROBOT_ENV:=isr-lab} # set only if it does not previously exists
 
 # workaroung to remove gazebo error msgs:
 # Error [Param.cc:181] Unable to set value [1,0471975511965976] for key[horizontal_fov]

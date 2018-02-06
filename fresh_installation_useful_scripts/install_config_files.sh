@@ -3,8 +3,10 @@
 # installs some useful config files for git and vim
 #----------------------------------------------------
 
+CONFDIR=${HOME}/scripts/fresh_installation_useful_scripts
+
 function overwrite_git {
-    cp gitconfig.txt ~/.gitconfig
+    cp ${CONFDIR}/gitconfig.txt ~/.gitconfig
     sed -i -e "s/my_user_name/${name}/g" ${HOME}/.gitconfig
     sed -i -e "s/my_mail@my_domain.com/${email}/g" ${HOME}/.gitconfig
 }
@@ -26,8 +28,8 @@ done
 printf "\nWriting name.txt and email.txt in personal_config directory\n"
 read -n 1 -s -r -p "Press any key to continue (ctrl+C to cancel)"; printf "\n"
 
-echo $name > ../personal_config/name.txt
-echo $email > ../personal_config/email.txt
+echo $name > ${HOME}/scripts/personal_config/name.txt
+echo $email > ${HOME}/scripts/personal_config/email.txt
 
 #######
 
@@ -49,8 +51,8 @@ read -p "Do you want an awesome vim config file? <y/N>" prompt;
 if [[ $prompt =~ [yY](es)* ]]; then
     mkdir ${HOME}/.cache/vim -p
     mkdir ${HOME}/.vim/colors -p
-    cp wombat256mod.vim ${HOME}/.vim/colors/
-    cp vimconfig.txt ${HOME}/.vimrc
+    cp ${CONFDIR}/wombat256mod.vim ${HOME}/.vim/colors/
+    cp ${CONFDIR}/vimconfig.txt ${HOME}/.vimrc
 fi
 
 #######

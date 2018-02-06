@@ -38,3 +38,9 @@
 :set nomodeline
 :set nrformats-=octal
 :hi CursorLine term=bold cterm=bold guibg=Grey40
+:set pastetoggle=<F3>
+
+" Copying and pasting from clipboard
+vmap <C-c> "+yi
+vmap <C-x> "+c
+imap <C-v> <ESC>"+pa
