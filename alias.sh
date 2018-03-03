@@ -57,8 +57,9 @@ alias refbox_sync='sudo ntpdate -u 10.0.0.1' # perform time synchronization with
 alias gpsr='roslaunch gpsr gpsr.launch'
 
 # mbot driver
-alias bringup_mbot="bash ${HOME}/scripts/safe_bringup.sh" # launch (real) robot driver
+alias bringup_mbot='bash ${HOME}/scripts/safe_bringup.sh' # launch (real) robot driver
 alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation
+alias bringup_sim_empty='roslaunch mbot_simulation robot.launch gazebo_gui:=true world_name:=world_name world_path:=worlds'
 alias bat='rosservice call /mbot_driver/sensors/batteries | grep battery' # check battery level on the robot
 alias teleop='roslaunch mbot_teleop_joypad teleop_joypad.launch' # teleoperation with joypad
 alias rotate_touchscreen='rosrun idmind_config rotate_screen.sh'
