@@ -3,6 +3,15 @@
 # store the current user location (current directory pwd)
 current_user_dir=$(pwd)
 
+# check if user only wants to check git pending jobs
+if [ "$1" == "check-git-pending-jobs" ]; then
+    echo 'user has requested only to check pendind git jobs'
+    only_check_git_pendign_jobs=true
+else
+    echo 'updating SocRob repositories...'
+    only_check_git_pendign_jobs=false
+fi
+
 # function to inform the user if there is uncommited stuff
 function is_there_pending_git_jobs_test()
 {
@@ -42,12 +51,23 @@ function safe_pull()
 function update_repo()
 {
     # args : 1. repo name, 2. remote, 3.branch
-    cd $ROS_WORKSPACE/$1 && safe_pull $2 $3 && is_there_pending_git_jobs_test
+
+    # check if user only wants to check git pending jobs
+    if [ "$only_check_git_pendign_jobs" = true ] ; then
+        cd $ROS_WORKSPACE/$1 && is_there_pending_git_jobs_test
+    else
+        cd $ROS_WORKSPACE/$1 && safe_pull $2 $3 && is_there_pending_git_jobs_test
+    fi
 }
 
 # scripts repo
-printf "updating SocRob repositories...\n\n --- scripts ---"
-cd $HOME/scripts && git pull origin master && is_there_pending_git_jobs_test
+printf "\n\n --- scripts ---\n\n"
+# check if user only wants to check git pending jobs
+if [ "$only_check_git_pendign_jobs" = true ] ; then
+    cd $HOME/scripts && is_there_pending_git_jobs_test
+else
+    cd $HOME/scripts && safe_pull origin master && is_there_pending_git_jobs_test
+fi
 
 # main repositories
 printf "\n\n --- isr_monarch_robot ---"
