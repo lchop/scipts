@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# store the current user location (current directory pwd)
+# store the current user location (current directory pwd) to send him back to this location when script finishes
 current_user_dir=$(pwd)
 
 # check if user only wants to check git pending jobs
@@ -8,8 +8,25 @@ if [ "$1" == "check-git-pending-jobs" ]; then
     echo 'user has requested only to check pendind git jobs'
     only_check_git_pendign_jobs=true
 else
-    echo 'updating SocRob repositories...'
+    printf "updating SocRob repositories...\n\n"
     only_check_git_pendign_jobs=false
+fi
+
+# check if user is harode server then ask for username and pass to save some time
+if [ $HOSTNAME == "harode-server" -o $HOSTNAME == "mbot05" ] ; then
+    send_credentials_to_git=true
+    if [[ -z "${SOCROB_USER}" ]]; then
+        echo 'SOCROB_USER env not set, tip: export SOCROB_USER=your_git_user if you want to save some time ; )'
+        # query username and password
+        read -p "Enter username : " username
+        read -s -p "Enter password : "  password
+    else
+        echo "hello ${SOCROB_USER} ! , welcome back"
+        username=$SOCROB_USER
+        read -s -p "Enter password : "  password
+    fi
+else
+    send_credentials_to_git=false
 fi
 
 # function to inform the user if there is uncommited stuff
@@ -38,7 +55,16 @@ function safe_pull()
     # if you are on x branch name and you want to pull from x then allow, otherwise do nothing
     if [ "${current_branch}" == $2 ]; then
         # is safe to pull (requested branch is same with actual repo branch), so pulling
-        git pull $1 $2
+
+        # if pc is harode server or mbot send stored credential to git server to speed up
+        if [ "$send_credentials_to_git" = true ] ; then
+            # pull but send credentials to save time
+            git pull http://${username}:${password}@dante.isr.tecnico.ulisboa.pt/socrob_at_home/$1.git $2
+        else
+            # normal pull, do not send credentials
+            git pull $1 $2
+        fi
+
     else
         # warn the user about the fact that he tried to pull from x but he is currently in branch y, therefore doing nothing
         RED='\033[0;31m'
@@ -56,7 +82,7 @@ function update_repo()
     if [ "$only_check_git_pendign_jobs" = true ] ; then
         cd $ROS_WORKSPACE/$1 && is_there_pending_git_jobs_test
     else
-        cd $ROS_WORKSPACE/$1 && safe_pull $2 $3 && is_there_pending_git_jobs_test
+        cd $ROS_WORKSPACE/$1 && safe_pull $1 $3 && is_there_pending_git_jobs_test
     fi
 }
 
@@ -66,7 +92,7 @@ printf "\n\n --- scripts ---\n\n"
 if [ "$only_check_git_pendign_jobs" = true ] ; then
     cd $HOME/scripts && is_there_pending_git_jobs_test
 else
-    cd $HOME/scripts && safe_pull origin master && is_there_pending_git_jobs_test
+    cd $HOME/scripts && safe_pull scripts master && is_there_pending_git_jobs_test
 fi
 
 # main repositories
@@ -89,7 +115,7 @@ update_repo unmerged_packages_for_testing origin kinetic
 # only for specific computers
 
 # simulation repos only on harode server
-if [ $(hostname) == "harode-server" ] ; then
+if [ $HOSTNAME == "harode-server" ] ; then
     printf "\n\n --- mbot_simulation ---\n\n"
     update_repo mbot_simulation origin kinetic
     printf "\n\n --- mbot_simulation_environments ---\n\n"
@@ -97,7 +123,7 @@ if [ $(hostname) == "harode-server" ] ; then
 fi
 
 # only for the robot PC
-if [ $(hostname) == "mbot05n" ] ; then
+if [ $HOSTNAME == "mbot05n" ] ; then
     # task planning
     printf "\n\n --- isr_planning ---\n\n"
     update_repo isr_planning origin kinetic
@@ -117,7 +143,7 @@ fi
 PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/update_workspace.sh
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
-printf "\n\n --- All done ! Ciao ---\n\n"
+printf "\n\n --- All done ! Ciao\n\nWARNING: remember to check each repo terminal output (above) to see if there were any errors ! ---\n\n"
 
 # go to where the user was at start
 cd $current_user_dir
