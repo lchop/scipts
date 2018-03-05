@@ -8,7 +8,7 @@ if [ "$1" == "check-git-pending-jobs" ]; then
     echo 'user has requested only to check pendind git jobs'
     only_check_git_pendign_jobs=true
 else
-    printf "updating SocRob repositories...\n\n"
+    printf "updating SocRob repositories...\n"
     only_check_git_pendign_jobs=false
 fi
 
@@ -47,29 +47,29 @@ function is_there_pending_git_jobs_test()
 # i.e. my repo is in "test" branch, I might not want to pull "kinetic" into "test"...
 function safe_pull()
 {
-    # args : 1. remote, 2. branch
+    # args : 1. repo name, 2. remote, 3.branch
 
     # find out the current branch (filters out the * and other branches)
     current_branch="$(git branch | grep \* | cut -d ' ' -f2)"
 
     # if you are on x branch name and you want to pull from x then allow, otherwise do nothing
-    if [ "${current_branch}" == $2 ]; then
+    if [ "${current_branch}" == "$3" ]; then
         # is safe to pull (requested branch is same with actual repo branch), so pulling
 
         # if pc is harode server or mbot send stored credential to git server to speed up
         if [ "$send_credentials_to_git" = true ] ; then
             # pull but send credentials to save time
-            git pull http://${username}:${password}@dante.isr.tecnico.ulisboa.pt/socrob_at_home/$1.git $2
+            git pull http://${username}:${password}@dante.isr.tecnico.ulisboa.pt/socrob_at_home/$1.git $3
         else
             # normal pull, do not send credentials
-            git pull $1 $2
+            git pull $2 $3
         fi
 
     else
         # warn the user about the fact that he tried to pull from x but he is currently in branch y, therefore doing nothing
         RED='\033[0;31m'
         NC='\033[0m' # No Color
-        printf "${RED}ERROR: is not safe to pull, you requested to pull from \"$2\" but your repo is in branch \"$current_branch\", doing nothing...${NC}\n"
+        printf "${RED}ERROR: is not safe to pull, you requested to pull from \"$3\" but your repo is in branch \"$current_branch\", doing nothing...${NC}\n"
     fi
 }
 
@@ -78,11 +78,15 @@ function update_repo()
 {
     # args : 1. repo name, 2. remote, 3.branch
 
+    printf "\n\n --- "$1" ---\n\n"
+
     # check if user only wants to check git pending jobs
     if [ "$only_check_git_pendign_jobs" = true ] ; then
+        # only check git pending jobs but do not pull
         cd $ROS_WORKSPACE/$1 && is_there_pending_git_jobs_test
     else
-        cd $ROS_WORKSPACE/$1 && safe_pull $1 $3 && is_there_pending_git_jobs_test
+        # pull and check if there if there is pending jobs
+        cd $ROS_WORKSPACE/$1 && safe_pull $1 $2 $3 && is_there_pending_git_jobs_test
     fi
 }
 
@@ -90,60 +94,48 @@ function update_repo()
 printf "\n\n --- scripts ---\n\n"
 # check if user only wants to check git pending jobs
 if [ "$only_check_git_pendign_jobs" = true ] ; then
+    # only check git pending jobs but do not pull
     cd $HOME/scripts && is_there_pending_git_jobs_test
 else
-    cd $HOME/scripts && safe_pull scripts master && is_there_pending_git_jobs_test
+    # pull and check if there if there is pending jobs
+    cd $HOME/scripts && safe_pull scripts origin master && is_there_pending_git_jobs_test
 fi
 
 # main repositories
-printf "\n\n --- isr_monarch_robot ---"
 update_repo isr_monarch_robot origin kinetic
-
-printf "\n\n --- mbot_drivers ---\n\n"
 update_repo mbot_drivers origin kinetic
-printf "\n\n --- cyton_gamma_1500_description ---\n\n"
 update_repo cyton_gamma_1500_description origin tec-gripper
-printf "\n\n --- mbot_description ---\n\n"
 update_repo mbot_description origin kinetic
-printf "\n\n --- robocup-at-work ---\n\n"
 update_repo robocup-at-work origin kinetic
-printf "\n\n --- mbot natural language processing ---\n\n"
 update_repo mbot_natural_language_processing origin kinetic
-printf "\n\n --- unmerged_packages_for_testing ---\n\n"
 update_repo unmerged_packages_for_testing origin kinetic
 
 # only for specific computers
 
 # simulation repos only on harode server
 if [ $HOSTNAME == "harode-server" ] ; then
-    printf "\n\n --- mbot_simulation ---\n\n"
     update_repo mbot_simulation origin kinetic
-    printf "\n\n --- mbot_simulation_environments ---\n\n"
     update_repo mbot_simulation_environments origin kinetic
 fi
 
 # only for the robot PC
 if [ $HOSTNAME == "mbot05n" ] ; then
     # task planning
-    printf "\n\n --- isr_planning ---\n\n"
     update_repo isr_planning origin kinetic
 
     # people following repos
-    printf "\n\n --- bayes_people_tracker ---\n\n"
     update_repo bayes_people_tracker origin kinetic
-    printf "\n\n --- bayestracking ---\n\n"
     update_repo bayestracking origin kinetic
-    printf "\n\n --- HumanAwareness ---\n\n"
     update_repo HumanAwareness origin kinetic
-    printf "\n\n --- spencer_people_tracking ---\n\n"
     update_repo spencer_people_tracking origin master
 fi
 
-# source personal configuration file (if it exists)
+# source personal configuration file (if it exists), this is to pull from other repos you might have in your workspace!
 PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/update_workspace.sh
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
-printf "\n\n --- All done ! Ciao\n\nWARNING: remember to check each repo terminal output (above) to see if there were any errors ! ---\n\n"
+printf "\n\n --- All done ! Ciao\n\n"
+printf "${YELLOW}WARNING: Remember to check each repo terminal output (above) to see if there were any errors !\n"
 
 # go to where the user was at start
 cd $current_user_dir
