@@ -47,7 +47,7 @@ function is_there_pending_git_jobs_test()
 # i.e. my repo is in "test" branch, I might not want to pull "kinetic" into "test"...
 function safe_pull()
 {
-    # args : 1. repo name, 2. remote, 3.branch
+    # args : 1. repo name, 2. remote, 3.branch, 4. dante repo?
 
     # find out the current branch (filters out the * and other branches)
     current_branch="$(git branch | grep \* | cut -d ' ' -f2)"
@@ -58,8 +58,18 @@ function safe_pull()
 
         # if pc is harode server or mbot send stored credential to git server to speed up
         if [ "$send_credentials_to_git" = true ] ; then
-            # pull but send credentials to save time
-            git pull http://${username}:${password}@dante.isr.tecnico.ulisboa.pt/socrob_at_home/$1.git $3
+
+            if [ "$4" == "true" ]; then
+                # repository is in dante
+
+                # pull but send credentials to save time
+                git pull http://${username}:${password}@dante.isr.tecnico.ulisboa.pt/socrob_at_home/$1.git $3
+            else
+                # repository is in github
+
+                # pull but send credentials to save time
+                git pull https://github.com/socrob/$1.git $3
+            fi
         else
             # normal pull, do not send credentials
             git pull $2 $3
@@ -76,7 +86,7 @@ function safe_pull()
 # function to change into the desired repo and then git pull
 function update_repo()
 {
-    # args : 1. repo name, 2. remote, 3.branch
+    # args : 1. repo name, 2. remote, 3.branch, 4. dante repo?
 
     printf "\n\n --- "$1" ---\n\n"
 
@@ -86,7 +96,7 @@ function update_repo()
         cd $ROS_WORKSPACE/$1 && is_there_pending_git_jobs_test
     else
         # pull and check if there if there is pending jobs
-        cd $ROS_WORKSPACE/$1 && safe_pull $1 $2 $3 && is_there_pending_git_jobs_test
+        cd $ROS_WORKSPACE/$1 && safe_pull $1 $2 $3 $4 && is_there_pending_git_jobs_test
     fi
 }
 
@@ -102,32 +112,32 @@ else
 fi
 
 # main repositories
-update_repo isr_monarch_robot origin kinetic
-update_repo mbot_drivers origin kinetic
-update_repo cyton_gamma_1500_description origin tec-gripper
-update_repo mbot_description origin kinetic
-update_repo robocup-at-work origin kinetic
-update_repo mbot_natural_language_processing origin kinetic
-update_repo unmerged_packages_for_testing origin kinetic
+update_repo isr_monarch_robot origin kinetic true
+update_repo mbot_drivers origin kinetic true
+update_repo cyton_gamma_1500_description origin tec-gripper false
+update_repo mbot_description origin kinetic true
+update_repo robocup-at-work origin kinetic false
+update_repo mbot_natural_language_processing origin kinetic true
+update_repo unmerged_packages_for_testing origin kinetic true
 
 # only for specific computers
 
 # simulation repos only on harode server
 if [ $HOSTNAME == "harode-server" ] ; then
-    update_repo mbot_simulation origin kinetic
-    update_repo mbot_simulation_environments origin kinetic
+    update_repo mbot_simulation origin kinetic true
+    update_repo mbot_simulation_environments origin kinetic false
 fi
 
 # only for the robot PC
 if [ $HOSTNAME == "mbot05n" ] ; then
     # task planning
-    update_repo isr_planning origin kinetic
+    update_repo isr_planning origin kinetic true
 
     # people following repos
-    update_repo bayes_people_tracker origin kinetic
-    update_repo bayestracking origin kinetic
-    update_repo HumanAwareness origin kinetic
-    update_repo spencer_people_tracking origin master
+    update_repo bayes_people_tracker origin kinetic false
+    update_repo bayestracking origin kinetic false
+    update_repo HumanAwareness origin kinetic false
+    update_repo spencer_people_tracking origin master false
 fi
 
 # source personal configuration file (if it exists), this is to pull from other repos you might have in your workspace!
