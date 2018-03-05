@@ -13,9 +13,9 @@ alias clean_pkg_from_ws='source ~/scripts/clean_pkg_from_ws.sh'
 alias cb='catkin build' # build the entire catkinworkspace (you need to be somewhere inside your catkin workspace)
 alias cbt='catkin build --this' # build one pkg (you need to be somewhere inside your ros pkg)
 
-# common handy tools
+# common handy alias
 alias sl='ls' # when typing fast sometimes ls gets typed as sl
-alias cap='pygmentize -g' # replace cat with python-pygments to cat with colors
+alias cap='pygmentize -g' # replacement of cat with python-pygments to cat with colors
 alias ..='cd .. && ls' # going back one directory and showing files convenient alias
 alias m='wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz' # toggle terminal from restored to maximized
 alias pull='git pull origin kinetic' # update socrob repository, works only for those which default branch is kinetic and if your remote name is origin
@@ -48,7 +48,8 @@ alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh to harode
 
 # Competition (ERL)
 alias refbox_server='roslaunch roah_rsbb roah_rsbb.launch' # to communicate with referee box
-alias refbox_client='roslaunch roah_rsbb_comm_ros test.launch team_name:=SocRob robot_name:=mbot05 rsbb_key:=EKY3GZUe rsbb_host:=10.0.255.255' # to communicate with referee box
+# to communicate with referee box
+alias refbox_client='roslaunch roah_rsbb_comm_ros test.launch team_name:=SocRob robot_name:=mbot05 rsbb_key:=EKY3GZUe rsbb_host:=10.0.255.255'
 alias refbox_sync='sudo ntpdate -u 10.0.0.1' # perform time synchronization with refbox server
 
 # robot components
@@ -59,8 +60,6 @@ alias gpsr='roslaunch gpsr gpsr.launch'
 
 # mbot driver
 alias bringup_mbot='bash ${HOME}/scripts/safe_bringup.sh' # launch (real) robot driver
-alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation
-alias bringup_sim_empty='roslaunch mbot_simulation robot.launch gazebo_gui:=true world_name:=empty.world world_path:=worlds'
 alias bat='rosservice call /mbot_driver/sensors/batteries | grep battery' # check battery level on the robot
 alias teleop='roslaunch mbot_teleop_joypad teleop_joypad.launch' # teleoperation with joypad
 alias rotate_touchscreen='rosrun idmind_config rotate_screen.sh'
@@ -68,6 +67,13 @@ alias open_network_manager='sudo nm-connection-editor' # needs the ssh connectio
 alias rqt_mbot_actions='roslaunch mbot_actions rqt_action_client.launch' # gui to interact with action servers
 alias mbot_class='rosrun mbot_robot_class interactive_node.sh' # ipython interaction with mbot via mbot_robot_class (example after this command: mbot.say('hello')
 alias head_camera_on_screen="export DISPLAY=:0 && bash -c 'rosrun rqt_image_view rqt_image_view /head_camera/rgb/image_raw'"
+
+# simulation
+# switch from trajectory ctrl to pos ctrl during runtime, kill the launch file to return to normal behavior
+alias enable_pos_ctrl='roslaunch mbot_gazebo_control switch_from_traj_to_pos_ctrl.launch'
+alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation with isr tested
+# launch simulator with empty world to save resources
+alias bringup_sim_empty='roslaunch mbot_simulation robot.launch gazebo_gui:=true world_name:=empty.world world_path:=worlds'
 
 # navigation
 alias dwa='roslaunch mbot_2dnav 2dnav.launch' # launch navigation stack in dwa mode
