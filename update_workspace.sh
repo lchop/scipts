@@ -117,7 +117,6 @@ update_repo mbot_drivers origin kinetic true
 update_repo cyton_gamma_1500_description origin tec-gripper false
 update_repo mbot_description origin kinetic true
 update_repo robocup-at-work origin kinetic false
-update_repo mbot_natural_language_processing origin kinetic true
 update_repo unmerged_packages_for_testing origin kinetic true
 
 # only for specific computers
@@ -126,6 +125,7 @@ update_repo unmerged_packages_for_testing origin kinetic true
 if [ $HOSTNAME == "harode-server" ] ; then
     update_repo mbot_simulation origin kinetic true
     update_repo mbot_simulation_environments origin kinetic false
+    update_repo mbot_natural_language_processing origin kinetic true
 fi
 
 # only for the robot PC
@@ -138,6 +138,7 @@ if [ $HOSTNAME == "mbot05n" ] ; then
     update_repo bayestracking origin kinetic false
     update_repo HumanAwareness origin kinetic false
     update_repo spencer_people_tracking origin master false
+    update_repo mbot_natural_language_processing origin kinetic true
 fi
 
 # source personal configuration file (if it exists), this is to pull from other repos you might have in your workspace!
