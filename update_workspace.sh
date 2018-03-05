@@ -108,7 +108,7 @@ if [ "$only_check_git_pendign_jobs" = true ] ; then
     cd $HOME/scripts && is_there_pending_git_jobs_test
 else
     # pull and check if there if there is pending jobs
-    cd $HOME/scripts && safe_pull scripts origin master && is_there_pending_git_jobs_test
+    cd $HOME/scripts && safe_pull scripts origin master true && is_there_pending_git_jobs_test
 fi
 
 # main repositories
