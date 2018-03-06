@@ -69,11 +69,13 @@ alias mbot_class='rosrun mbot_robot_class interactive_node.sh' # ipython interac
 alias head_camera_on_screen="export DISPLAY=:0 && bash -c 'rosrun rqt_image_view rqt_image_view /head_camera/rgb/image_raw'"
 
 # simulation
-# switch from trajectory ctrl to pos ctrl during runtime, kill the launch file to return to normal behavior
-alias enable_pos_ctrl='roslaunch mbot_gazebo_control switch_from_traj_to_pos_ctrl.launch'
 alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation with isr tested
 # launch simulator with empty world to save resources
 alias bringup_sim_empty='roslaunch mbot_simulation robot.launch gazebo_gui:=true world_name:=empty.world world_path:=worlds'
+# switch from trajectory ctrl to pos ctrl during runtime, kill the launch file to return to normal behavior
+alias enable_pos_ctrl='roslaunch mbot_gazebo_control switch_from_traj_to_pos_ctrl.launch'
+# switch from trajectory ctrl to velocity ctrl during runtime, kill the launch file to return to normal behavior
+alias enable_vel_ctrl='roslaunch mbot_gazebo_control switch_from_traj_to_vel_ctrl.launch'
 
 # navigation
 alias dwa='roslaunch mbot_2dnav 2dnav.launch' # launch navigation stack in dwa mode
