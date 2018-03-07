@@ -5,7 +5,7 @@ current_user_dir=$(pwd)
 
 # check if user only wants to check git pending jobs
 if [ "$1" == "check-git-pending-jobs" ]; then
-    echo 'user has requested only to check pendind git jobs'
+    printf "User has requested only to check pendind git jobs...\n\n"
     only_check_git_pendign_jobs=true
 else
     printf "updating SocRob repositories...\n"
@@ -14,16 +14,20 @@ fi
 
 # check if user is harode server then ask for username and pass to save some time
 if [ $HOSTNAME == "harode-server" -o $HOSTNAME == "mbot05" ] ; then
-    send_credentials_to_git=true
-    if [[ -z "${SOCROB_USER}" ]]; then
-        echo 'SOCROB_USER env not set, tip: export SOCROB_USER=your_git_user if you want to save some time ; )'
-        # query username and password
-        read -p "Enter username : " username
-        read -s -p "Enter password : "  password
-    else
-        echo "hello ${SOCROB_USER} ! , welcome back"
-        username=$SOCROB_USER
-        read -s -p "Enter password : "  password
+    if [ "$only_check_git_pendign_jobs" != true ] ; then
+        send_credentials_to_git=true
+        if [[ -z "${SOCROB_USER}" ]]; then
+            # query username and password
+            read -p "Enter username : " username
+            # export username to env for next time not having to enter username
+            export SOCROB_USER=$username
+            # read password from console and store in password variable
+            read -s -p "Enter password : "  password
+        else
+            echo "hello ${SOCROB_USER} ! , welcome back"
+            username=$SOCROB_USER
+            read -s -p "Enter password : "  password
+        fi
     fi
 else
     send_credentials_to_git=false
@@ -36,6 +40,10 @@ function is_there_pending_git_jobs_test()
 
     # do git status and check if there are pending git jobs: modified files or untracked, etc.
     if [[ $(git status -s) ]]; then
+        if [ "$only_check_git_pendign_jobs" == true ] ; then
+            # print repo name
+            printf " --- "$1" ---\n"
+        fi
         # echo 'WARNING: you have pending git jobs!' in yellow color:
         YELLOW='\033[1;33m'
         NC='\033[0m' # No Color
@@ -88,27 +96,26 @@ function update_repo()
 {
     # args : 1. repo name, 2. remote, 3.branch, 4. dante repo?
 
-    printf "\n\n --- "$1" ---\n\n"
-
     # check if user only wants to check git pending jobs
     if [ "$only_check_git_pendign_jobs" = true ] ; then
         # only check git pending jobs but do not pull
-        cd $ROS_WORKSPACE/$1 && is_there_pending_git_jobs_test
+        cd $ROS_WORKSPACE/$1 && is_there_pending_git_jobs_test $1
     else
+        # print repo name and spaces
+        printf "\n\n --- "$1" ---\n\n"
         # pull and check if there if there is pending jobs
-        cd $ROS_WORKSPACE/$1 && safe_pull $1 $2 $3 $4 && is_there_pending_git_jobs_test
+        cd $ROS_WORKSPACE/$1 && safe_pull $1 $2 $3 $4 && is_there_pending_git_jobs_test $1
     fi
 }
 
 # scripts repo
-printf "\n\n --- scripts ---\n\n"
 # check if user only wants to check git pending jobs
 if [ "$only_check_git_pendign_jobs" = true ] ; then
     # only check git pending jobs but do not pull
-    cd $HOME/scripts && is_there_pending_git_jobs_test
+    cd $HOME/scripts && is_there_pending_git_jobs_test scripts
 else
     # pull and check if there if there is pending jobs
-    cd $HOME/scripts && safe_pull scripts origin master true && is_there_pending_git_jobs_test
+    cd $HOME/scripts && safe_pull scripts origin master true && is_there_pending_git_jobs_test scripts
 fi
 
 # main repositories
@@ -146,7 +153,9 @@ PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/update_workspace.sh
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
 
 printf "\n\n --- All done ! Ciao\n\n"
-printf "${YELLOW}WARNING: Remember to check each repo terminal output (above) to see if there were any errors !\n"
+if [ "$only_check_git_pendign_jobs" != true ] ; then
+    printf "${YELLOW}WARNING: Remember to check each repo terminal output (above) to see if there were any errors !\n"
+fi
 
 # go to where the user was at start
 cd $current_user_dir
