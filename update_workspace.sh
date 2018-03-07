@@ -13,7 +13,7 @@ else
 fi
 
 # check if user is harode server then ask for username and pass to save some time
-if [ $HOSTNAME == "harode-server" -o $HOSTNAME == "mbot05" ] ; then
+if [ $HOSTNAME == "harode-server" -o $HOSTNAME == "mbot05n" ] ; then
     if [ "$only_check_git_pendign_jobs" != true ] ; then
         send_credentials_to_git=true
         if [[ -z "${SOCROB_USER}" ]]; then
