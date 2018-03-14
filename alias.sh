@@ -1,4 +1,9 @@
 # socrob alias: used to save time in typing commands
+source ${HOME}/scripts/utils.sh
+
+MBOT_IP=10.1.15.14
+HARODE_IP=10.0.2.69
+ROAH_MBOT_IP=10.0.0.41
 
 # ROS related
 alias kill_all_ros_nodes='sudo pkill -f ros' # kill all ros nodes running on the robot
@@ -35,15 +40,15 @@ alias remove_endline_spaces="sed -i 's/\s*$//'" # remove automatically spaces at
 alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean temp files *.~ recursively
 
 # Robot network connection
-alias mbot='ssh socrob@10.1.15.14' # ssh to mbot05 pc1 (also known as nav pc)
-alias roah_mbot='ssh socrob@10.0.0.41' #ssh to mbot05 pc1 in roah network
+alias mbot='ssh socrob@$MBOT_IP' # ssh to mbot05 pc1 (also known as nav pc)
+alias roah_mbot='ssh socrob@$ROAH_MBOT_IP' #ssh to mbot05 pc1 in roah network
 alias mbot2='ssh socrob@10.1.15.15' # ssh to mbot05 pc2 (also known as hri pc)
 alias hello_pub='rostopic pub /test std_msgs/String hello' # publish a test topic to test network sanity
 alias hello_sub='rostopic echo /test' # echo a test topic to test network sanity
-alias export_mbot='export ROS_MASTER_URI=http://10.1.15.14:11311'
-alias export_roah_mbot='export ROS_MASTER_URI=http://10.0.0.41:11311'
-alias export_harode='export ROS_MASTER_URI=http://10.0.2.69:11311 && export GAZEBO_MASTER_URI=http://10.0.2.69:11345'
-alias harode='ssh harode@10.0.2.69' # ssh to harode server
+alias export_mbot='export ROS_MASTER_URI=http://$MBOT_IP:11311 && export ROS_IP=`get_interface_that_pings $MBOT_IP | get_ip_of_interface`'
+alias export_roah_mbot='export ROS_MASTER_URI=http://$ROAH_MBOT_IP:11311 && export ROS_IP=`get_interface_that_pings $ROAH_MBOT_IP | get_ip_of_interface`'
+alias export_harode='export ROS_MASTER_URI=http://$HARODE_IP:11311 && export GAZEBO_MASTER_URI=http://$HARODE_IP:11345 && export ROS_IP=`get_interface_that_pings $HARODE_IP | get_ip_of_interface`'
+alias harode='ssh harode@$HARODE_IP' # ssh to harode server
 alias harodeipv6='ssh -6 -X harode@harode01.ipv6.isr.ist.utl.pt' # ssh to harode server from outside ist
 
 # Competition (ERL)
