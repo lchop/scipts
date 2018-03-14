@@ -76,7 +76,9 @@ alias head_camera_on_screen="export DISPLAY=:0 && bash -c 'rosrun rqt_image_view
 # simulation
 alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation with isr tested
 # launch simulator with empty world to save resources
-alias bringup_sim_empty='roslaunch mbot_simulation robot.launch gazebo_gui:=true world_name:=empty.world world_path:=worlds'
+alias bringup_sim_empty='roslaunch mbot_simulation robot.launch world_name:=empty.world'
+# launch simulator with grasp world, a world with front small table and objects in front of the robot
+alias bringup_sim_grasping='roslaunch mbot_simulation robot.launch world_name:=mbot_grasping.world'
 # switch between arm controllers during runtime, requires args: origin target, i.e. trajectory position. (admissible values: trajectory, position, velocity)
 alias switch_arm_sim_ctrl='rosrun mbot_gazebo_control switch_arm_sim_ctrl'
 
