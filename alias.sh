@@ -31,6 +31,7 @@ alias please='sudo $(history -p !!)' # run last command as sudo
 alias wifi_on='sudo nmcli radio wifi on'
 alias wifi_off='sudo nmcli radio wifi off'
 alias S='source ${HOME}/.bashrc'
+alias find_big_files='find . -size +10M -ls'
 
 # text editor
 alias e='emacs -nw' # open emacs text editor in terminal mode
