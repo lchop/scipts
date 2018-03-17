@@ -41,7 +41,7 @@ export ROSCONSOLE_FORMAT='[${severity}] [${node}]: ${message}' # print ros messa
 export ROSLAUNCH_SSH_UNKNOWN=1 # to allow running nodes without being a known host
 
 # ROBOT DESCRIPTION AND ROBOT ENVIRONMENT
-export ROBOT=${ROBOT:=mbot05} # set only if it does not previously exists, possible values: mbot05-with-arm, mbot05
+export ROBOT=${ROBOT:=mbot05-with-arm} # set only if it does not previously exists, possible values: mbot05-with-arm, mbot05
 export ROBOT_ENV=${ROBOT_ENV:=isr-lab} # set only if it does not previously exists
 
 # workaroung to remove gazebo error msgs:
