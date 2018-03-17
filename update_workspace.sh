@@ -128,14 +128,28 @@ update_repo unmerged_packages_for_testing origin kinetic true
 
 # only for specific computers
 
-# simulation repos only on harode server
+# i.e. simulation repos only on harode server
 if [ $HOSTNAME == "harode-server" ] ; then
+    # task planning
+    update_repo isr_planning origin kinetic true
+
+    # simulation repos
     update_repo mbot_simulation origin kinetic true
     update_repo mbot_simulation_environments origin kinetic false
     update_repo mbot_natural_language_processing origin kinetic true
+
+    # people following repos
+    update_repo bayes_people_tracker origin kinetic false
+    update_repo bayestracking origin kinetic false
+    update_repo HumanAwareness origin kinetic false
+    update_repo spencer_people_tracking origin master false
+
+    # natural_language_processing repos
+    update_repo mbot_natural_language_processing origin kinetic true
+    update_repo mbot_nlu_classifiers origin master true
 fi
 
-# only for the robot PC
+# only for the robot PC (no simulation repos needed)
 if [ $HOSTNAME == "mbot05n" ] ; then
     # task planning
     update_repo isr_planning origin kinetic true
@@ -145,7 +159,10 @@ if [ $HOSTNAME == "mbot05n" ] ; then
     update_repo bayestracking origin kinetic false
     update_repo HumanAwareness origin kinetic false
     update_repo spencer_people_tracking origin master false
+
+    # natural_language_processing repos
     update_repo mbot_natural_language_processing origin kinetic true
+    update_repo mbot_nlu_classifiers origin master true
 fi
 
 # source personal configuration file (if it exists), this is to pull from other repos you might have in your workspace!
