@@ -17,6 +17,16 @@ elif [ $(hostname) == "mbot05h" ]; then
    export ROS_IP=10.1.15.15
    export ROS_MASTER_URI=http://10.1.15.14:11311
 elif [ $(hostname) == "harode-server" ]; then
+   # check existing file for setting ip, else set default
+   if [ -f ${IP_FILE} ]; then
+      IP=`grep -v '^#' ${IP_FILE}`
+      export ROS_IP=${IP}
+      export ROS_MASTER_URI=http://${IP}:11311
+      export ROSCONSOLE_CONFIG_FILE=$ROS_WORKSPACE/mbot_drivers/mbot_bringup/ros/config/mbot_console.config
+   else
+      export ROS_IP=10.0.2.69
+      export ROS_MASTER_URI=http://10.0.2.69:11311
+   fi
    export GAZEBO_MASTER_URI=http://10.0.2.69:11345
 fi
 
