@@ -146,7 +146,6 @@ if [ $HOSTNAME == "harode-server" ] ; then
 
     # natural_language_processing repos
     update_repo mbot_natural_language_processing origin kinetic true
-    update_repo mbot_nlu_classifiers origin master true
 fi
 
 # only for the robot PC (no simulation repos needed)
@@ -162,7 +161,6 @@ if [ $HOSTNAME == "mbot05n" ] ; then
 
     # natural_language_processing repos
     update_repo mbot_natural_language_processing origin kinetic true
-    update_repo mbot_nlu_classifiers origin master true
 fi
 
 # source personal configuration file (if it exists), this is to pull from other repos you might have in your workspace!
