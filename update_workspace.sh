@@ -136,7 +136,6 @@ if [ $HOSTNAME == "harode-server" ] ; then
     # simulation repos
     update_repo mbot_simulation origin kinetic true
     update_repo mbot_simulation_environments origin kinetic false
-    update_repo mbot_natural_language_processing origin kinetic true
 
     # people following repos
     update_repo bayes_people_tracker origin kinetic false
