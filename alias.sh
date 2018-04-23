@@ -2,6 +2,7 @@
 source ${HOME}/scripts/utils.sh
 
 MBOT_IP=10.1.15.14
+MBOT_IP_7=10.1.15.20
 HARODE_IP=10.0.2.69
 ROAH_MBOT_IP=10.0.0.41
 
@@ -42,11 +43,13 @@ alias clean='find . -name "*~" -type f -exec /bin/rm -fv -- {} +' # to clean tem
 
 # Robot network connection
 alias mbot='ssh socrob@$MBOT_IP' # ssh to mbot05 pc1 (also known as nav pc)
+alias mbot7='ssh socrob@$MBOT_IP_7' # ssh to mbot07 pc1 (also known as nav pc)
 alias roah_mbot='ssh socrob@$ROAH_MBOT_IP' #ssh to mbot05 pc1 in roah network
 alias mbot2='ssh socrob@10.1.15.15' # ssh to mbot05 pc2 (also known as hri pc)
 alias hello_pub='rostopic pub /test std_msgs/String hello' # publish a test topic to test network sanity
 alias hello_sub='rostopic echo /test' # echo a test topic to test network sanity
 alias export_mbot='export ROS_MASTER_URI=http://$MBOT_IP:11311 && export ROS_IP=`get_interface_that_pings $MBOT_IP | get_ip_of_interface`'
+alias export_mbot7='export ROS_MASTER_URI=http://$MBOT_IP_7:11311 && export ROS_IP=`get_interface_that_pings $MBOT_IP_7 | get_ip_of_interface`'
 alias export_roah_mbot='export ROS_MASTER_URI=http://$ROAH_MBOT_IP:11311 && export ROS_IP=`get_interface_that_pings $ROAH_MBOT_IP | get_ip_of_interface`'
 alias export_harode='export ROS_MASTER_URI=http://$HARODE_IP:11311 && export GAZEBO_MASTER_URI=http://$HARODE_IP:11345 && export ROS_IP=`get_interface_that_pings $HARODE_IP | get_ip_of_interface`'
 alias harode='ssh harode@$HARODE_IP' # ssh to harode server
