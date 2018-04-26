@@ -66,6 +66,7 @@ alias refbox_sync='sudo ntpdate -u 10.0.0.1' # perform time synchronization with
 
 # general purpose service robot (GPSR)
 alias gpsr='roslaunch gpsr gpsr.launch'
+alias gpsr_data_collection='roslaunch gpsr gpsr.launch data_collection:=true'
 
 # mbot driver
 alias bringup_mbot='bash ${HOME}/scripts/safe_bringup.sh' # launch (real) robot driver
