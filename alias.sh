@@ -1,10 +1,10 @@
 # socrob alias: used to save time in typing commands
 source ${HOME}/scripts/utils.sh
 
-MBOT_IP=10.1.15.14
-MBOT_IP_7=10.1.15.20
-HARODE_IP=10.0.2.69
-ROAH_MBOT_IP=10.0.0.41
+export MBOT_IP=10.1.15.14
+export MBOT_IP_7=10.1.15.20
+export HARODE_IP=10.0.2.69
+export ROAH_MBOT_IP=10.0.0.41
 
 # ROS related
 alias kill_all_ros_nodes='sudo pkill -f ros' # kill all ros nodes running on the robot
