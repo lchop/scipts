@@ -20,6 +20,7 @@ packagelist=(
     guake             # fancy drop down terminal
     geany             # text editor
     wmctrl            # to maximize a terminal from cmd line
+    python-pip        # easier python extensions
 )
 
 ### install debian packages listed in array above
