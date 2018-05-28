@@ -34,6 +34,7 @@ alias wifi_off='sudo nmcli radio wifi off'
 alias S='source ${HOME}/.bashrc'
 alias find_big_files='find . -size +10M -ls'
 alias gpu='watch nvidia-smi' # display gpu usage
+alias record_video='bash ~/scripts/record_video_robot_camera/record_video_robot_camera.sh' # record video with mbot camera
 
 # text editor
 alias e='emacs -nw' # open emacs text editor in terminal mode
