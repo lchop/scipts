@@ -1,6 +1,9 @@
 udev rules
 ===
 
+85-mbot.rules - mbot05
+80-mbot.rules - mbot07
+
 udev allows you to detect USB plug in events on your PC to automatically take actions.
 
 Such action could be for instance to give proper rights to the port and to create a simbolic link

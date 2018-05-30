@@ -1,21 +1,25 @@
-# mbot05 UDEV rules
+# mbot07 UDEV rules
 
 # cyton arm
-SUBSYSTEM=="tty", KERNEL=="ttyUSB*", KERNELS=="1-1.2:1.0", SYMLINK+="mbot/cyton-arm", MODE="0666"
+SUBSYSTEM=="tty", KERNEL=="ttyUSB*", KERNELS=="1-1.4:1.0", SYMLINK+="mbot/cyton-arm", MODE="0666"
 
 # mbot head cam tilt motor (usb to dynamixel adapter)
 SUBSYSTEM=="tty", KERNEL=="ttyUSB*", KERNELS=="3-1.3:1.0", SYMLINK+="mbot/head-camera-motor", MODE="0666"
 
 # boards
-SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board1",SYMLINK+="mbot/sensorboard",GROUP="dialout"
-SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board2",SYMLINK+="mbot/motorboard",GROUP="dialout"
+#SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board1",SYMLINK+="mbot/sensorboard",GROUP="dialout"
+SUBSYSTEM=="tty", KERNEL=="ttyUSB*", KERNELS=="2-1.5:1.0", SYMLINK+="mbot/motorboard", MODE="0666"
+
+SUBSYSTEM=="tty", KERNEL=="ttyUSB*", KERNELS=="2-1.6:1.0", SYMLINK+="mbot/sensorboard", MODE="0666"
+#SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board2",SYMLINK+="mbot/motorboard",GROUP="dialout"
+
 SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board3",SYMLINK+="mbot/interacboard",GROUP="dialout"
 SUBSYSTEMS=="usb",KERNEL=="ttyACM[0-9]*",ATTRS{idProduct}=="8036",ATTRS{idVendor}=="2341",SYMLINK+="mbot/imu",GROUP="dialout"
 #SUBSYSTEMS=="usb",ATTRS{idProduct}=="6001",ATTRS{idVendor}=="0403",ATTRS{serial}=="board4",SYMLINK+="mbot/armsboard",GROUP="dialout"
 #SUBSYSTEMS=="usb",ATTRS{idProduct}=="2303",ATTRS{idVendor}=="067b",SYMLINK+="mbot/rfidreader",GROUP="dialout"
 
 # hokuyo laser scanners
-SUBSYSTEM=="tty", KERNEL=="ttyACM*", KERNELS=="3-2:1.0", SYMLINK+="mbot/hokuyo-front", MODE="0666"
+SUBSYSTEM=="tty", KERNEL=="ttyACM*", KERNELS=="1-1.3:1.0", SYMLINK+="mbot/hokuyo-front", MODE="0666"
 SUBSYSTEM=="tty", KERNEL=="ttyACM*", KERNELS=="1-1.1:1.0", SYMLINK+="mbot/hokuyo-rear", MODE="0666"
 
 # astra camera rules
