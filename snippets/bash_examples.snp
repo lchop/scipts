@@ -64,3 +64,13 @@ x=valid
 if [ "$x" == "valid" ]; then
   echo "x has the value 'valid'"
 fi
+
+--- # string comparison with elif
+
+#!/bin/bash
+x=valid
+if [ "$x" == "valid" ]; then
+  echo "x has the value 'valid'"
+elif [ "$x" == "not_valid" ]; then
+  echo "x has the value 'not_valid'"
+fi
