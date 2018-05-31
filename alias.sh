@@ -15,11 +15,26 @@ alias tf_view_frames='cd /var/tmp && rosrun tf2_tools view_frames.py && evince f
 alias socrob_create_pkg='source ~/scripts/create_ros_pkg.sh'
 alias clean_pkg_from_ws='source ~/scripts/clean_pkg_from_ws.sh'
 
+# ROS bash alias
+alias r='rviz'
+alias rc='roscore'
+alias rt='rostopic'
+alias rs='rosservice'
+alias rn='rosnode'
+alias rl='roslaunch'
+alias rr='rosrun'
+alias rb='rosbag'
+alias rcd='roscd'
+# to source the ROS workspace in which you are currently located (pwd)
+alias sd='ll devel/setup.bash && echo "source devel/setup.bash" && source devel/setup.bash'
+
 # compilation
 alias cb='catkin build' # build the entire catkinworkspace (you need to be somewhere inside your catkin workspace)
 alias cbt='catkin build --this' # build one pkg (you need to be somewhere inside your ros pkg)
 
 # common handy alias
+alias p='python'
+alias sai='sudo apt install'
 alias sl='ls' # when typing fast sometimes ls gets typed as sl
 alias cap='pygmentize -g' # replacement of cat with python-pygments to cat with colors
 alias ..='cd .. && ls' # going back one directory and showing files convenient alias

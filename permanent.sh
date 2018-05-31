@@ -34,7 +34,7 @@ source $HOME/scripts/display_git_branch_in_prompt.sh
 source $HOME/scripts/roscat.sh
 
 # source autocomplete extensions
-source $HOME/scripts/autcomplete.sh
+source $HOME/scripts/autocomplete.sh
 
 # source personal config file one last time
 test -f $PERSONAL_CONFIG_FILE && source $PERSONAL_CONFIG_FILE
