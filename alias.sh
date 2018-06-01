@@ -137,3 +137,4 @@ alias angry='rostopic pub --once /led_emotions_interface/emotions std_msgs/Strin
 alias surprised='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Surprise' # Set the robot face to be surprised
 alias sad='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Sadness' # Set the robot face to be sad
 alias speak="espeak -s 120 -v en-us '" # this alias requires a ' at the end of the msg
+alias mbot_mirror_display='~/scripts/live_robot_screen.sh' # this alias mirrors the robot's display to your own computer
