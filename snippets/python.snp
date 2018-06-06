@@ -1,3 +1,29 @@
 # python comprehension list
 a = [each for each in range(1,5)]
 
+# shutdown your own node from code
+import rospy
+rospy.signal_shutdown('params not found')
+
+# class definition
+class ArmInteractionInterface(object):
+
+# weird way of calling main function in python
+if __name__ == '__main__':
+
+# python header to indicate the file holds python code
+#!/usr/bin/env python
+
+# publication
+from std_msgs.msg import String
+rospy.Publisher('~even_out', String, queue_size=1)
+
+# subscription
+from std_msgs.msg import String
+rospy.Subscriber("/test_node/event_in", String, self.emotionCallback, queue_size=1)
+
+# constructor
+def __init__(self):
+
+# init node
+rospy.init_node('my_node_name', anonymous=False)
