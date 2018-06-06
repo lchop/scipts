@@ -122,7 +122,8 @@ alias move_arm_planned='rostopic pub --once /move_arm_planned_motion/event_in st
 alias open_gripper='rostopic pub --once /left_arm_gripper/gripper_command mcr_manipulation_msgs/GripperCommand "command: 0"'
 alias close_gripper='rostopic pub --once /left_arm_gripper/gripper_command mcr_manipulation_msgs/GripperCommand "command: 1"'
 alias pick='rosrun mbot_actions pick_object_client_test_node' # pick an object with the robot arm
-alias kill_arm='rosrun cyton_gamma_1500_driver set_arm_torque_off' # kill all arm joints alias
+alias kill_arm='rosservice call /cyton_gamma_1500_driver/arm_interaction_node/left_arm/torque_enable "torque_enable: false"' # set all arm joints torque off
+alias set_arm_torque_on='rosservice call /cyton_gamma_1500_driver/arm_interaction_node/left_arm/torque_enable "torque_enable: true"' # set all arm joints torque on
 alias rqt_moveit='rqt --standalone mcr_moveit_commander_gui --force-discover' # moveit commander custom gui interface
 
 # task planning
