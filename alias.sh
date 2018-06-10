@@ -101,6 +101,8 @@ alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulat
 alias bringup_sim_empty='roslaunch mbot_simulation robot.launch world_name:=empty.world'
 # launch simulator with grasp world, a world with front small table and objects in front of the robot
 alias bringup_sim_grasping='roslaunch mbot_simulation robot.launch world_name:=mbot_grasping.world'
+# launch simulator with storing groceries world, a world without sofa and with a small table near the cupboard
+alias bringup_sim_storing='roslaunch storing_groceries gazebo_storing_bringup.launch'
 # switch between arm controllers during runtime, requires args: origin target, i.e. trajectory position. (admissible values: trajectory, position, velocity)
 alias switch_arm_sim_ctrl='rosrun mbot_gazebo_control switch_arm_sim_ctrl'
 
