@@ -94,6 +94,7 @@ alias open_network_manager='sudo nm-connection-editor' # needs the ssh connectio
 alias rqt_mbot_actions='roslaunch mbot_actions rqt_action_client.launch' # gui to interact with action servers
 alias mbot_class='rosrun mbot_robot_class interactive_node.sh' # ipython interaction with mbot via mbot_robot_class (example after this command: mbot.say('hello')
 alias head_camera_on_screen="export DISPLAY=:0 && bash -c 'rosrun rqt_image_view rqt_image_view /head_camera/rgb/image_raw'"
+alias undock='rosservice call /mbot_driver/sensors/dock_undock "control: 1"'
 
 # simulation
 alias bringup_sim='roslaunch mbot_simulation robot.launch' # launch mbot simulation with isr tested
