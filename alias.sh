@@ -83,6 +83,7 @@ alias refbox_sync='sudo ntpdate -u 10.0.0.1' # perform time synchronization with
 
 # general purpose service robot (GPSR)
 alias gpsr='roslaunch gpsr gpsr.launch'
+alias gpsr2='roslaunch darknet_ros_py darknet_ros_py_known_objects.launch'
 alias gpsr_data_collection='roslaunch gpsr gpsr.launch data_collection:=true'
 
 # mbot driver
@@ -142,3 +143,6 @@ alias surprised='rostopic pub --once /led_emotions_interface/emotions std_msgs/S
 alias sad='rostopic pub --once /led_emotions_interface/emotions std_msgs/String Sadness' # Set the robot face to be sad
 alias speak="espeak -s 120 -v en-us '" # this alias requires a ' at the end of the msg
 alias mbot_mirror_display='~/scripts/live_robot_screen.sh' # this alias mirrors the robot's display to your own computer
+
+# Robocup 2018 alias
+alias storing_groceries='roslaunch storing_groceries storing_groceries.launch'
