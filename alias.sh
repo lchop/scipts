@@ -85,6 +85,8 @@ alias refbox_sync='sudo ntpdate -u 10.0.0.1' # perform time synchronization with
 alias gpsr='roslaunch gpsr gpsr.launch'
 alias gpsr2='roslaunch darknet_ros_py darknet_ros_py_known_objects.launch'
 alias gpsr_data_collection='roslaunch gpsr gpsr.launch data_collection:=true'
+alias eegpsr='roslaunch eegpsr eegpsr.launch'
+alias eegpsr2='roslaunch darknet_ros_py darknet_ros_py_known_objects.launch'
 
 # mbot driver
 alias bringup_mbot='bash ${HOME}/scripts/safe_bringup.sh' # launch (real) robot driver
