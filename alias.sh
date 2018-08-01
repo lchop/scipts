@@ -32,6 +32,9 @@ alias sd='ll devel/setup.bash && echo "source devel/setup.bash" && source devel/
 alias cb='catkin build' # build the entire catkinworkspace (you need to be somewhere inside your catkin workspace)
 alias cbt='catkin build --this' # build one pkg (you need to be somewhere inside your ros pkg)
 
+# testing
+alias cbtest='catkin test --no-deps --this' # perform catkin tests specified in the CMakeLists of this package
+
 # common handy alias
 alias p='python'
 alias sai='sudo apt install'
