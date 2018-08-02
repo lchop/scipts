@@ -33,7 +33,7 @@ alias cb='catkin build' # build the entire catkinworkspace (you need to be somew
 alias cbt='catkin build --this' # build one pkg (you need to be somewhere inside your ros pkg)
 
 # testing
-alias cbtest='catkin test --no-deps --this' # perform catkin tests specified in the CMakeLists of this package
+alias cbtest='catkin run_tests --no-deps --this' # perform catkin tests specified in the CMakeLists of this package
 
 # common handy alias
 alias p='python'
