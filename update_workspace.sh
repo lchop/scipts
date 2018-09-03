@@ -144,7 +144,7 @@ if [ $HOSTNAME == "harode-server" ] ; then
     update_repo spencer_people_tracking origin master false
 
     # natural_language_processing repos
-    update_repo mbot_natural_language_processing origin kinetic true
+    update_repo mbot_natural_language_processing origin master true
 fi
 
 # only for the robot PC (no simulation repos needed)
@@ -159,7 +159,7 @@ if [ $HOSTNAME == "mbot05n" ] ; then
     update_repo spencer_people_tracking origin master false
 
     # natural_language_processing repos
-    update_repo mbot_natural_language_processing origin kinetic true
+    update_repo mbot_natural_language_processing origin master true
 fi
 
 # source personal configuration file (if it exists), this is to pull from other repos you might have in your workspace!
