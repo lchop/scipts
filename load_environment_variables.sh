@@ -51,3 +51,6 @@ export LC_NUMERIC=C
 
 # for tensor flow to log as little as possible (used in mbot_nlu)
 export TF_CPP_MIN_LOG_LEVEL=2
+
+# for rviz to open with a default file config
+export RVIZ_CONFIG_PATH=${ROS_WORKSPACE}/isr_monarch_robot/mbot_tools/rviz_configurations/universal.rviz

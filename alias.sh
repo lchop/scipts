@@ -9,7 +9,7 @@ export ROAH_MBOT_IP=10.0.0.41
 # ROS related
 alias kill_all_ros_nodes='sudo pkill -f ros' # kill all ros nodes running on the robot
 alias smach_viewer='rosrun smach_viewer smach_viewer.py'
-alias rviz='rosrun rviz rviz --display-config ${ROS_WORKSPACE}/isr_monarch_robot/mbot_tools/rviz_configurations/universal.rviz'
+alias rviz='rosrun rviz rviz --display-config ${RVIZ_CONFIG_PATH}'
 alias reconfigure='rosrun rqt_reconfigure rqt_reconfigure' # open dynamic reconfigure
 alias tf_view_frames='cd /var/tmp && rosrun tf2_tools view_frames.py && evince frames.pdf &' # view current frames
 alias socrob_create_pkg='source ~/scripts/create_ros_pkg.sh'
