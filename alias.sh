@@ -7,7 +7,7 @@ export HARODE_IP=10.0.2.69
 export ROAH_MBOT_IP=10.0.0.41
 
 # ROS related
-alias kill_all_ros_nodes='sudo pkill -f ros' # kill all ros nodes running on the robot
+alias kill_all_ros_nodes='sudo pkill -f ros && sudo pkill -f java' # kill all ros nodes running on the robot
 alias smach_viewer='rosrun smach_viewer smach_viewer.py'
 alias rviz='rosrun rviz rviz --display-config ${RVIZ_CONFIG_PATH}'
 alias reconfigure='rosrun rqt_reconfigure rqt_reconfigure' # open dynamic reconfigure
