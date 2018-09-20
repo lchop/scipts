@@ -125,6 +125,12 @@ update_repo cyton_gamma_1500_description origin tec-gripper false
 update_repo mbot_description origin kinetic true
 update_repo robocup-at-work origin kinetic false
 update_repo unmerged_packages_for_testing origin kinetic true
+update_repo dynamixel_motor origin kinetic false
+update_repo cob_driver origin only_scan_unifier false
+update_repo axis_camera origin master false
+update_repo face_classification origin master false
+update_repo mbot_yolo origin kinetic true
+update_repo picotts origin master false
 
 # only for specific computers
 
