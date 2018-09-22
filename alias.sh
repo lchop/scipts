@@ -54,6 +54,7 @@ alias find_big_files='find . -size +10M -ls'
 alias gpu='watch nvidia-smi' # display gpu usage
 alias record_video='bash ~/scripts/record_video_robot_camera/record_video_robot_camera.sh' # record video with mbot camera
 alias grammar_cpl='source $(rospack find vocon_speech_recognizer)/common/scripts/make_grammar.sh'
+alias forget_git='git credential-cache exit'
 
 # text editor
 alias e='emacs -nw' # open emacs text editor in terminal mode
