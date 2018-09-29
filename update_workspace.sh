@@ -121,7 +121,7 @@ fi
 # main repositories
 update_repo isr_monarch_robot origin kinetic true
 update_repo mbot_drivers origin kinetic true
-update_repo cyton_gamma_1500_description origin tec-gripper false
+update_repo cyton_gamma_1500_description origin tec-gripper-v2 false
 update_repo mbot_description origin kinetic true
 update_repo robocup-at-work origin kinetic false
 update_repo unmerged_packages_for_testing origin kinetic true
