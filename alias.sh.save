@@ -23,8 +23,8 @@ alias rcd='roscd'
 # to source the ROS workspace in which you are currently located (pwd)
 alias sd='ll devel/setup.bash && echo "source devel/setup.bash" && source devel/setup.bash'
 # compilation
-alias camk='catkin_make -j1 -l1' # build one pkg (you need to be somewhere inside your ros pkg)
-alias cca="watch ccache -s"
+alias camk='catkin_make' # build one pkg (you need to be somewhere inside your ros pkg)
+
 
 # common handy alias
 alias p='python'
@@ -34,9 +34,10 @@ alias ls='ls --color=auto'
 alias ll='ls -la'
 alias l.='ls -d .* --color=auto'
 alias sl='ls' # when typing fast sometimes ls gets typed as sl
+alias tr='trash'
 
 alias ..='cd .. && ls --color=auto' # going back one directory and showing files convenient alias
-alias ...='cd ../../../'
+	alias ...='cd ../../../'
 alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 

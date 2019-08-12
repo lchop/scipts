@@ -6,6 +6,10 @@ PERSONAL_CONFIG_FILE=$HOME/scripts/personal_config/personal_config.sh
 
 # set this env, only if it does not previously exist, (override in personal_config.sh if required)
 export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/ros_ws/src}
+#export ROS_WORKSPACE=${ROS_WORKSPACE:=$HOME/crd_ws/src}
+
+#export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH:=$HOME/ros_ws/src/simulation_tests/resources/model}
+
 
 # source a catkin workspace
 source $HOME/scripts/source_ros_workspace.sh
